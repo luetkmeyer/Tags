@@ -1,5 +1,4 @@
 ---
-Tags e seus significados. Quando eu usar uma tag, considere-a como diretriz para a resposta. Com mais de uma tag, aplique-as cumulativamente.
 [tags]
 Liste brevemente as tags disponíveis e seus significados.
 
