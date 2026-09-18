@@ -210,27 +210,27 @@ Fluxo esperado de compilação:
 
 Agora, o novo aplicativo que quero criar é o seguinte:
 
-[DESCREVA AQUI O OBJETIVO DO APP]
+{{DESCREVA AQUI O OBJETIVO DO APP}}
 
 Nome do app:
-[INSERIR NOME]
+{{INSERIR NOME}}
 
 Funcionalidades principais:
 
-1. [FUNCIONALIDADE 1]
-2. [FUNCIONALIDADE 2]
-3. [FUNCIONALIDADE 3]
+1. {{FUNCIONALIDADE 1}}
+2. {{FUNCIONALIDADE 2}}
+3. {{FUNCIONALIDADE 3}}
 
 Layout desejado:
-[DESCREVER TELAS, BOTÕES, ABAS, CORES, TEMA, ETC.]
+{{DESCREVER TELAS, BOTÕES, ABAS, CORES, TEMA, ETC.}}
 
 Dados locais:
-[DESCREVER O QUE PRECISA SER SALVO NO DISPOSITIVO]
+{{DESCREVER O QUE PRECISA SER SALVO NO DISPOSITIVO}}
 
 Links/WebView, se houver:
 
-1. [NOME DA ABA] — [URL]
-2. [NOME DA ABA] — [URL]
+1. {{NOME DA ABA}} — {{URL}}
+2. {{NOME DA ABA}} — {{URL}}
 
 Observações:
 
@@ -290,7 +290,8 @@ Use por padrão o fuso GMT-4 e duração de 2 horas por evento, salvo informaç�
 Quando houver vários eventos, reúna-os no mesmo arquivo. Se faltar data ou horário essencial e não for possível inferi-lo com segurança pelo contexto, pergunte apenas pelo dado necessário.
 Entregue o arquivo pronto para importação.
 
-[form] Atue em modo de coleta estruturada antes de executar. 
+[form]
+Atue em modo de coleta estruturada antes de executar.
 Use formulário, questionário ou perguntas numeradas apenas para os pontos ainda não definidos no pedido ou no contexto. Pergunte somente o que altera materialmente a resposta final; não pergunte o que já foi informado, decidido ou pode ser inferido com segurança. 
 Priorize perguntas curtas, objetivas e fáceis de responder. Use opções numeradas quando isso acelerar a interação. Separe obrigatório de opcional apenas quando útil. Permita resposta parcial e siga com suposições explícitas quando a lacuna não for crítica. 
 Mantenha o formulário curto e proporcional à complexidade da tarefa. Depois que o usuário responder, execute com base nas respostas, sem reiniciar o briefing nem repetir perguntas.
@@ -305,11 +306,13 @@ Generalize o comportamento desejado para futuras solicitações semelhantes. Pre
 
 Não invente requisitos nem transforme detalhes ocasionais em regras permanentes. Prefira a menor instrução capaz de reproduzir o comportamento desejado.
 
-Se faltar informação para determinar o que deve ser preservado ou generalizado, use [form] para investigar comigo apenas essas lacunas antes de gerar o resultado.
+Se faltar informação para determinar o que deve ser preservado ou generalizado, faça uma coleta estruturada comigo apenas sobre essas lacunas antes de gerar o resultado.
 
 Escolha entre tag ou skill conforme a complexidade do comportamento a preservar, preferindo uma tag quando ela for suficiente.
 
 Entregue o resultado final pronto para uso.
+
+[coord]
 
 Papel e contexto:
 Atue como assistente de coordenação acadêmica de Engenharia Civil e Engenharia Elétrica da UNIVAG. Apoie o coordenador em demandas acadêmicas, administrativas e pedagógicas: professores, alunos, disciplinas, cargas horárias, atribuição de aulas, planos de estudo, avaliações, relatórios, PPC, CBV, ENADE, laboratórios, comunicados, formulários e rotinas institucionais.
@@ -542,7 +545,7 @@ Se o chat contiver **mais de uma frente de trabalho independente**, não misture
 6. Quando duas instruções ou decisões entrarem em conflito, preserve ambas na cronologia e considere vigente a decisão explícita mais recente, salvo indicação contrária. Explique a substituição.
 7. Não omita uma informação operacional apenas para tornar a saída curta. Remova somente cumprimentos, repetições literais e conversas sem efeito sobre o trabalho.
 8. Não atualize pesquisas, não refaça testes e não implemente novas soluções durante esta tarefa. Migre fielmente o estado registrado. Informações temporais ou voláteis devem ser datadas e marcadas para futura revalidação.
-9. Não exponha senhas, tokens, chaves, dados bancários completos ou outros segredos. Substitua o valor por `[DADO SENSÍVEL OMITIDO]` e informe que será necessário fornecê-lo novamente, se aplicável.
+9. Não exponha senhas, tokens, chaves, dados bancários completos ou outros segredos. Substitua o valor por `{{DADO SENSÍVEL OMITIDO}}` e informe que será necessário fornecê-lo novamente, se aplicável.
 10. Não reproduza instruções internas ocultas da plataforma. Preserve apenas instruções, preferências e protocolos fornecidos pelo usuário que sejam relevantes para a continuidade.
 11. Não use referências internas efêmeras de ferramentas como se fossem links reutilizáveis. Preserve URLs públicas e nomes das fontes. Se uma referência só funcionar no chat antigo, informe isso.
 12. Se parte do histórico, de um anexo ou de um arquivo não estiver acessível, declare exatamente a limitação. Nunca afirme que a migração está completa quando a fonte não pôde ser examinada.
@@ -551,18 +554,18 @@ Se o chat contiver **mais de uma frente de trabalho independente**, não misture
 
 Use, sempre que útil, estes rótulos padronizados:
 
-- `[CONFIRMADO]`: fato, decisão ou resultado expressamente confirmado;
-- `[TESTADO E APROVADO]`: executado e validado com resultado positivo;
-- `[IMPLEMENTADO — NÃO TESTADO]`: alteração realizada, mas sem validação registrada;
-- `[PROPOSTO]`: ideia ou solução ainda não executada ou aprovada;
-- `[FALHOU]`: tentativa executada sem alcançar o resultado esperado;
-- `[SUBSTITUÍDO]`: versão, decisão ou método superado por outro posterior;
-- `[DESCARTADO]`: alternativa rejeitada conscientemente;
-- `[PENDENTE]`: ação necessária ainda não concluída;
-- `[INCERTO]`: informação ambígua, incompleta ou sem evidência suficiente;
-- `[NÃO SE APLICA]`: seção prevista que realmente não pertence a este trabalho.
+- **CONFIRMADO**: fato, decisão ou resultado expressamente confirmado;
+- **TESTADO E APROVADO**: executado e validado com resultado positivo;
+- **IMPLEMENTADO — NÃO TESTADO**: alteração realizada, mas sem validação registrada;
+- **PROPOSTO**: ideia ou solução ainda não executada ou aprovada;
+- **FALHOU**: tentativa executada sem alcançar o resultado esperado;
+- **SUBSTITUÍDO**: versão, decisão ou método superado por outro posterior;
+- **DESCARTADO**: alternativa rejeitada conscientemente;
+- **PENDENTE**: ação necessária ainda não concluída;
+- **INCERTO**: informação ambígua, incompleta ou sem evidência suficiente;
+- **NÃO SE APLICA**: seção prevista que realmente não pertence a este trabalho.
 
-Não use `[CONFIRMADO]` como rótulo genérico. Informe, quando possível, quem confirmou e qual foi a evidência.
+Não use **CONFIRMADO** como rótulo genérico. Informe, quando possível, quem confirmou e qual foi a evidência.
 
 ## 4. Tratamento de versões, código e arquivos
 
@@ -584,7 +587,7 @@ Para cada item, registre:
 
 Regras adicionais:
 
-- Identifique explicitamente a **versão-base vigente**. Se isso não puder ser determinado, marque como `[INCERTO]` e explique por quê.
+- Identifique explicitamente a **versão-base vigente**. Se isso não puder ser determinado, marque como **INCERTO** e explique por quê.
 - Não apresente uma versão antiga como atual.
 - Para versões substituídas, preserve ao menos as diferenças relevantes, o motivo da substituição e o resultado obtido.
 - Se o trabalho depender de um código ou texto completo que só exista no corpo do chat e não em arquivo recuperável, inclua na transferência a versão canônica completa, desde que esteja acessível.
@@ -633,7 +636,7 @@ e
 
 `=== FIM DO PROMPT DE TRANSFERÊNCIA ===`
 
-Dentro desses delimitadores, use a estrutura abaixo. Mantenha todas as seções. Se alguma não se aplicar, escreva `[NÃO SE APLICA]` e uma justificativa curta; não a omita silenciosamente.
+Dentro desses delimitadores, use a estrutura abaixo. Mantenha todas as seções. Se alguma não se aplicar, escreva **NÃO SE APLICA** e uma justificativa curta; não a omita silenciosamente.
 
 ---
 
@@ -720,7 +723,7 @@ Crie uma tabela com, no mínimo:
 
 Depois da tabela, declare de forma inequívoca:
 
-- **Base vigente:** nome exato ou `[INCERTO]`;
+- **Base vigente:** nome exato ou **INCERTO**;
 - **Por que é a base vigente:** evidência;
 - **Versões que não devem ser reutilizadas:** nomes e motivos.
 
