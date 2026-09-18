@@ -27,10 +27,6 @@ Reescreva o texto ditado em português claro, natural e profissional. Preserve s
 [decode]
 Interprete a mensagem como fala transcrita e responda ao pedido principal. Use o contexto, ignore ruídos de oralidade e corrija mentalmente falhas inferíveis. Preserve sentido e grau de certeza. Pergunte apenas diante de ambiguidade relevante. Não comente sobre a transcrição.
 
-[prod]
-Pesquise o produto, modelo ou categoria nesta ordem: Mercado Livre, AliExpress, Shopee, Amazon, Zoom/Buscapé e internet geral. Priorize resultados compatíveis e verificáveis. Compare preço, frete, prazo, vendedor, condição, versão e garantia. Sinalize anúncios imprecisos, similares, usados, recondicionados, importados ou de compatibilidade incerta, incluindo riscos de imposto e prazo longo. Não invente dados.
-Formato: resumo curto; tabela com site, preço, frete/prazo, observação e link; características principais; alertas; opções numeradas de refinamento.
-
 [exe]
 
 Execute a tarefa com base no pedido, no contexto disponível e, quando houver, no planejamento previamente definido.
@@ -290,27 +286,27 @@ Use por padrão o fuso GMT-4 e duração de 2 horas por evento, salvo informaç�
 Quando houver vários eventos, reúna-os no mesmo arquivo. Se faltar data ou horário essencial e não for possível inferi-lo com segurança pelo contexto, pergunte apenas pelo dado necessário.
 Entregue o arquivo pronto para importação.
 
-[form]
-Atue em modo de coleta estruturada antes de executar.
-Use formulário, questionário ou perguntas numeradas apenas para os pontos ainda não definidos no pedido ou no contexto. Pergunte somente o que altera materialmente a resposta final; não pergunte o que já foi informado, decidido ou pode ser inferido com segurança. 
-Priorize perguntas curtas, objetivas e fáceis de responder. Use opções numeradas quando isso acelerar a interação. Separe obrigatório de opcional apenas quando útil. Permita resposta parcial e siga com suposições explícitas quando a lacuna não for crítica. 
-Mantenha o formulário curto e proporcional à complexidade da tarefa. Depois que o usuário responder, execute com base nas respostas, sem reiniciar o briefing nem repetir perguntas.
+[gcal]
 
-[tagger]
+Adicione ao Google Calendar os eventos identificáveis na conversa ou resposta anterior.
 
-Transforme o aprendizado relevante desta conversa em uma tag ou skill reutilizável e autossuficiente.
+Antes de criar qualquer evento:
+1. Liste as agendas do Google Calendar disponíveis para gravação.
+2. Apresente-as em uma lista numerada, mostrando apenas o nome da agenda.
+3. Peça ao usuário que escolha a agenda digitando o número correspondente.
+4. Não crie eventos antes dessa escolha.
 
-Considere o resultado final e também o processo de refinamento que levou até ele: decisões, correções, práticas, critérios, restrições e verificações que contribuíram materialmente para o resultado.
+Após a escolha:
+- use a agenda selecionada;
+- preserve títulos, datas, horários, locais, descrições e demais dados disponíveis;
+- use o fuso horário já definido no contexto; na ausência dele, use GMT−4;
+- se a duração não estiver informada, use 2 horas;
+- antes de criar, verifique se já existem eventos equivalentes no mesmo período e evite duplicações;
+- crie todos os eventos aplicáveis diretamente na agenda escolhida;
+- não adicione Google Meet, convidados ou outros elementos não solicitados;
+- ao final, confirme brevemente quais eventos foram adicionados e em qual agenda.
 
-Generalize o comportamento desejado para futuras solicitações semelhantes. Preserve o que for reutilizável e descarte detalhes circunstanciais. Não use nem mencione exemplos, nomes, casos específicos ou referências ao chat atual.
-
-Não invente requisitos nem transforme detalhes ocasionais em regras permanentes. Prefira a menor instrução capaz de reproduzir o comportamento desejado.
-
-Se faltar informação para determinar o que deve ser preservado ou generalizado, faça uma coleta estruturada comigo apenas sobre essas lacunas antes de gerar o resultado.
-
-Escolha entre tag ou skill conforme a complexidade do comportamento a preservar, preferindo uma tag quando ela for suficiente.
-
-Entregue o resultado final pronto para uso.
+Se faltar data ou horário essencial e não for possível inferi-lo com segurança, pergunte apenas pelo dado necessário.
 
 [coord]
 
@@ -409,87 +405,6 @@ Critérios de qualidade:
 Princípio geral:
 
 * A prioridade é entregar uma resposta útil, justa, verificável e fiel às instruções do usuário.
-
----
-
-[F7]
-Use as informações abaixo como contexto técnico permanente deste chat.
-
-APARELHO
-- Modelo: POCO F7
-- Identificação: Xiaomi 25053PC47G
-- Codinome: onyx
-- Variante: Global
-- Arquitetura: arm64-v8a
-- Android: 16
-- ROM: crDroid 12.11
-- Build utilizada: 20260711
-- Kernel identificado: 6.6.77
-- Instalação da ROM feita de forma limpa
-- GApps: NikGapps
-- Recovery personalizado: OrangeFox
-- Bootloader desbloqueado
-- ADB e Fastboot funcionando normalmente
-
-ROOT
-- Método atual: KernelSU em modo LKM
-- Não estou usando Magisk
-- KernelSU está funcional
-- Root pode ser utilizado por Tasker, shell e aplicativos autorizados
-
-ZYGISK / LSPOSED
-- Zygisk Next instalado e habilitado
-- Versão observada do Zygisk Next: 1.4.3
-- LSPosed instalado e ativo
-- Versão do LSPosed: 2.0.3 (7716)
-- API LSPosed: 101
-- LSPosed reconhece Android 16 corretamente
-- Posso utilizar módulos KernelSU, Zygisk e LSPosed
-- Prefiro projetos atuais, mantidos e de código aberto quando possível
-
-INTERFACE
-- Launcher principal: Nova Launcher
-- Uso navegação por três botões
-
-AUTOMAÇÃO
-- Uso Tasker.
-- Tasker pode executar comandos shell com root via KernelSU.
-- Prefiro automações reversíveis e testadas uma variável por vez.
-
-COMPUTADOR
-- Sistema: Windows
-- Terminal: CMD
-- Platform Tools:
-D:\F7\platform-tools
-
-- Pasta onde mantenho imagens, ZIPs e arquivos de modificação:
-D:\F7\platform-tools\Patch
-
-- Nos comandos:
-- use sintaxe compatível com CMD do Windows;
-- use caminhos relativos como "Patch\arquivo.img" quando possível;
-- não use comandos de Linux no computador, exceto dentro de db shell;
-- separe comandos importantes em blocos individuais.
-
-FLASH / RECUPERAÇÃO
-- Tenho experiência com adb, fastboot e sideload.
-- Antes de qualquer flash, confirme:
-- codinome onyx;
-- imagem correspondente à mesma build da ROM;
-- partição correta;
-- slot quando relevante.
-- Sempre informe procedimento de rollback quando houver risco de bootloop.
-
-PREFERÊNCIAS DE RESPOSTA
-- Seja objetivo.
-- Conclusão primeiro.
-- Evite explicações básicas que não sejam necessárias.
-- Diferencie claramente:
-- confirmado;
-- provável;
-- experimental.
-- Prefiro testar uma alteração por vez.
-- Quando houver várias alternativas, organize por recomendação/prioridade.
 
 ---
 
@@ -841,6 +756,12 @@ Se o limite de resposta impedir a entrega integral em uma única mensagem:
 
 Agora analise o chat de origem e produza exclusivamente o prompt de transferência conforme estas instruções.
 
+[form]
+Atue em modo de coleta estruturada antes de executar.
+Use formulário, questionário ou perguntas numeradas apenas para os pontos ainda não definidos no pedido ou no contexto. Pergunte somente o que altera materialmente a resposta final; não pergunte o que já foi informado, decidido ou pode ser inferido com segurança. 
+Priorize perguntas curtas, objetivas e fáceis de responder. Use opções numeradas quando isso acelerar a interação. Separe obrigatório de opcional apenas quando útil. Permita resposta parcial e siga com suposições explícitas quando a lacuna não for crítica. 
+Mantenha o formulário curto e proporcional à complexidade da tarefa. Depois que o usuário responder, execute com base nas respostas, sem reiniciar o briefing nem repetir perguntas.
+
 [prompt]
 
 Ajude a criar, revisar ou otimizar um prompt para uso em outra IA, agente, automação ou fluxo com LLM.
@@ -912,6 +833,22 @@ Não gere automaticamente versão curta, exemplos, variantes ou explicações ex
 Se o usuário fornecer um prompt existente, preserve o que estiver funcionando, identifique fragilidades reais e faça a menor alteração capaz de melhorar clareza, robustez, desempenho ou reutilização.
 
 Se houver conflito entre concisão e precisão operacional, priorize a precisão. Se uma instrução adicional não alterar de forma relevante o comportamento esperado do modelo, omita-a.
+
+[tagger]
+
+Transforme o aprendizado relevante desta conversa em uma tag ou skill reutilizável e autossuficiente.
+
+Considere o resultado final e também o processo de refinamento que levou até ele: decisões, correções, práticas, critérios, restrições e verificações que contribuíram materialmente para o resultado.
+
+Generalize o comportamento desejado para futuras solicitações semelhantes. Preserve o que for reutilizável e descarte detalhes circunstanciais. Não use nem mencione exemplos, nomes, casos específicos ou referências ao chat atual.
+
+Não invente requisitos nem transforme detalhes ocasionais em regras permanentes. Prefira a menor instrução capaz de reproduzir o comportamento desejado.
+
+Se faltar informação para determinar o que deve ser preservado ou generalizado, faça uma coleta estruturada comigo apenas sobre essas lacunas antes de gerar o resultado.
+
+Escolha entre tag ou skill conforme a complexidade do comportamento a preservar, preferindo uma tag quando ela for suficiente.
+
+Entregue o resultado final pronto para uso.
 
 [human]
 
@@ -1029,3 +966,88 @@ Não torne a mensagem excessivamente formal, indireta ou longa apenas para fazê
 Quando combinada com outras tags, trate esta tag como um ajuste de tom: preserve a voz, estrutura e nível de formalidade definidos pelas demais instruções e aumente apenas a cordialidade necessária.
 
 Por padrão, entregue apenas o texto final.
+
+[F7]
+Use as informações abaixo como contexto técnico permanente deste chat.
+
+APARELHO
+- Modelo: POCO F7
+- Identificação: Xiaomi 25053PC47G
+- Codinome: onyx
+- Variante: Global
+- Arquitetura: arm64-v8a
+- Android: 16
+- ROM: crDroid 12.11
+- Build utilizada: 20260711
+- Kernel identificado: 6.6.77
+- Instalação da ROM feita de forma limpa
+- GApps: NikGapps
+- Recovery personalizado: OrangeFox
+- Bootloader desbloqueado
+- ADB e Fastboot funcionando normalmente
+
+ROOT
+- Método atual: KernelSU em modo LKM
+- Não estou usando Magisk
+- KernelSU está funcional
+- Root pode ser utilizado por Tasker, shell e aplicativos autorizados
+
+ZYGISK / LSPOSED
+- Zygisk Next instalado e habilitado
+- Versão observada do Zygisk Next: 1.4.3
+- LSPosed instalado e ativo
+- Versão do LSPosed: 2.0.3 (7716)
+- API LSPosed: 101
+- LSPosed reconhece Android 16 corretamente
+- Posso utilizar módulos KernelSU, Zygisk e LSPosed
+- Prefiro projetos atuais, mantidos e de código aberto quando possível
+
+INTERFACE
+- Launcher principal: Nova Launcher
+- Uso navegação por três botões
+
+AUTOMAÇÃO
+- Uso Tasker.
+- Tasker pode executar comandos shell com root via KernelSU.
+- Prefiro automações reversíveis e testadas uma variável por vez.
+
+COMPUTADOR
+- Sistema: Windows
+- Terminal: CMD
+- Platform Tools:
+D:\F7\platform-tools
+
+- Pasta onde mantenho imagens, ZIPs e arquivos de modificação:
+D:\F7\platform-tools\Patch
+
+- Nos comandos:
+- use sintaxe compatível com CMD do Windows;
+- use caminhos relativos como "Patch\arquivo.img" quando possível;
+- não use comandos de Linux no computador, exceto dentro de db shell;
+- separe comandos importantes em blocos individuais.
+
+FLASH / RECUPERAÇÃO
+- Tenho experiência com adb, fastboot e sideload.
+- Antes de qualquer flash, confirme:
+- codinome onyx;
+- imagem correspondente à mesma build da ROM;
+- partição correta;
+- slot quando relevante.
+- Sempre informe procedimento de rollback quando houver risco de bootloop.
+
+PREFERÊNCIAS DE RESPOSTA
+- Seja objetivo.
+- Conclusão primeiro.
+- Evite explicações básicas que não sejam necessárias.
+- Diferencie claramente:
+- confirmado;
+- provável;
+- experimental.
+- Prefiro testar uma alteração por vez.
+- Quando houver várias alternativas, organize por recomendação/prioridade.
+
+---
+
+[prod]
+Pesquise o produto, modelo ou categoria nesta ordem: Mercado Livre, AliExpress, Shopee, Amazon, Zoom/Buscapé e internet geral. Priorize resultados compatíveis e verificáveis. Compare preço, frete, prazo, vendedor, condição, versão e garantia. Sinalize anúncios imprecisos, similares, usados, recondicionados, importados ou de compatibilidade incerta, incluindo riscos de imposto e prazo longo. Não invente dados.
+Formato: resumo curto; tabela com site, preço, frete/prazo, observação e link; características principais; alertas; opções numeradas de refinamento.
