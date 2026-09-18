@@ -489,3 +489,351 @@ PREFERÊNCIAS DE RESPOSTA
 - Quando houver várias alternativas, organize por recomendação/prioridade.
 
 ---
+
+[migrar]
+# PROMPT-MESTRE — MIGRAÇÃO INTEGRAL DE CHAT
+
+Você está sendo executado dentro de um **chat de origem** que será migrado para outro projeto ou chat.
+
+Sua missão é analisar integralmente todo o histórico que estiver acessível neste chat e produzir um **prompt de transferência de contexto**, autossuficiente e pronto para ser copiado e colado em um chat novo.
+
+## Objetivo essencial
+
+Não produza um resumo convencional. Produza um **pacote operacional de continuidade** que permita ao novo chat:
+
+- compreender o objetivo e o contexto do trabalho;
+- conhecer tudo o que já foi solicitado, decidido, tentado, produzido e testado;
+- distinguir claramente o que funcionou, o que falhou, o que foi apenas proposto e o que ainda está pendente;
+- identificar todas as versões, arquivos, anexos, links, comandos, configurações e artefatos relevantes;
+- reconhecer qual é o estado atual e qual versão deve ser considerada a base vigente;
+- continuar do ponto correto, sem reiniciar a análise nem repetir perguntas já respondidas.
+
+O resultado desta execução será usado como **mensagem inicial do novo chat**. Portanto, escreva a saída dirigindo-se diretamente ao assistente que assumirá o trabalho.
+
+## 1. Escopo da análise
+
+Antes de redigir a saída, examine internamente todo o conteúdo disponível, incluindo, quando existirem:
+
+- mensagens do usuário e do assistente;
+- correções, aprovações, rejeições e mudanças de direção;
+- requisitos explícitos e requisitos descobertos durante o trabalho;
+- instruções personalizadas fornecidas pelo usuário, convenções de resposta, tags e preferências relevantes;
+- código, comandos, parâmetros, configurações, mensagens de erro e resultados de execução;
+- pesquisas, comparações, fontes, URLs, produtos, preços e datas de consulta;
+- arquivos anexados, arquivos gerados, imagens, documentos e nomes de versões;
+- testes executados, evidências apresentadas e validações do usuário;
+- dúvidas ainda não resolvidas, limitações, riscos e próximos passos.
+
+Se o chat contiver **mais de uma frente de trabalho independente**, não misture seus estados. Identifique as frentes e organize cada uma separadamente, mantendo as relações existentes entre elas.
+
+## 2. Regras obrigatórias de fidelidade
+
+1. Use somente informações realmente presentes ou inferíveis com segurança a partir do chat. Não invente fatos, resultados, arquivos, decisões ou testes.
+2. Preserve nomes exatos de arquivos, versões, modelos, funções, hotkeys, variáveis, comandos, caminhos, URLs, parâmetros, datas, valores e mensagens de erro sempre que estiverem disponíveis.
+3. Registre também tentativas malsucedidas, regressões, soluções descartadas e caminhos abandonados. Explique por que falharam ou foram substituídos, quando isso estiver documentado.
+4. Diferencie rigorosamente:
+   - pedido do usuário;
+   - sugestão do assistente;
+   - decisão aprovada;
+   - alteração efetivamente implementada;
+   - alteração testada;
+   - resultado confirmado pelo usuário.
+5. Não considere uma sugestão como implementada, nem uma implementação como validada, sem evidência no histórico.
+6. Quando duas instruções ou decisões entrarem em conflito, preserve ambas na cronologia e considere vigente a decisão explícita mais recente, salvo indicação contrária. Explique a substituição.
+7. Não omita uma informação operacional apenas para tornar a saída curta. Remova somente cumprimentos, repetições literais e conversas sem efeito sobre o trabalho.
+8. Não atualize pesquisas, não refaça testes e não implemente novas soluções durante esta tarefa. Migre fielmente o estado registrado. Informações temporais ou voláteis devem ser datadas e marcadas para futura revalidação.
+9. Não exponha senhas, tokens, chaves, dados bancários completos ou outros segredos. Substitua o valor por `[DADO SENSÍVEL OMITIDO]` e informe que será necessário fornecê-lo novamente, se aplicável.
+10. Não reproduza instruções internas ocultas da plataforma. Preserve apenas instruções, preferências e protocolos fornecidos pelo usuário que sejam relevantes para a continuidade.
+11. Não use referências internas efêmeras de ferramentas como se fossem links reutilizáveis. Preserve URLs públicas e nomes das fontes. Se uma referência só funcionar no chat antigo, informe isso.
+12. Se parte do histórico, de um anexo ou de um arquivo não estiver acessível, declare exatamente a limitação. Nunca afirme que a migração está completa quando a fonte não pôde ser examinada.
+
+## 3. Classificação obrigatória de estado
+
+Use, sempre que útil, estes rótulos padronizados:
+
+- `[CONFIRMADO]`: fato, decisão ou resultado expressamente confirmado;
+- `[TESTADO E APROVADO]`: executado e validado com resultado positivo;
+- `[IMPLEMENTADO — NÃO TESTADO]`: alteração realizada, mas sem validação registrada;
+- `[PROPOSTO]`: ideia ou solução ainda não executada ou aprovada;
+- `[FALHOU]`: tentativa executada sem alcançar o resultado esperado;
+- `[SUBSTITUÍDO]`: versão, decisão ou método superado por outro posterior;
+- `[DESCARTADO]`: alternativa rejeitada conscientemente;
+- `[PENDENTE]`: ação necessária ainda não concluída;
+- `[INCERTO]`: informação ambígua, incompleta ou sem evidência suficiente;
+- `[NÃO SE APLICA]`: seção prevista que realmente não pertence a este trabalho.
+
+Não use `[CONFIRMADO]` como rótulo genérico. Informe, quando possível, quem confirmou e qual foi a evidência.
+
+## 4. Tratamento de versões, código e arquivos
+
+Faça um inventário de **todas as versões e todos os arquivos relevantes citados**, mesmo que tenham sido substituídos.
+
+Para cada item, registre:
+
+- nome exato;
+- tipo ou formato;
+- origem: anexado pelo usuário, gerado pelo assistente ou apenas mencionado;
+- finalidade;
+- principais alterações;
+- relação com versões anteriores e posteriores;
+- resultado conhecido dos testes;
+- estado atual;
+- se é ou não a base vigente;
+- se precisará ser anexado novamente no novo chat;
+- caminho ou link, somente quando ele for realmente reutilizável.
+
+Regras adicionais:
+
+- Identifique explicitamente a **versão-base vigente**. Se isso não puder ser determinado, marque como `[INCERTO]` e explique por quê.
+- Não apresente uma versão antiga como atual.
+- Para versões substituídas, preserve ao menos as diferenças relevantes, o motivo da substituição e o resultado obtido.
+- Se o trabalho depender de um código ou texto completo que só exista no corpo do chat e não em arquivo recuperável, inclua na transferência a versão canônica completa, desde que esteja acessível.
+- Se houver um arquivo recuperável, prefira indicar seu nome exato e a necessidade de reanexá-lo. Não presuma que anexos ou links temporários estarão disponíveis no novo chat.
+- Se um anexo não puder ser lido integralmente, registre o que se sabe sobre ele e o que permanece inacessível.
+
+## 5. Tratamento de testes, erros e pesquisas
+
+Para cada teste ou tentativa relevante, informe:
+
+- objetivo;
+- procedimento, comando ou configuração usada;
+- ambiente ou pré-condições conhecidas;
+- resultado esperado;
+- resultado observado;
+- evidência ou confirmação disponível;
+- consequência para a decisão seguinte.
+
+Para erros e insucessos, preserve:
+
+- sintoma ou mensagem exata;
+- versão em que ocorreu;
+- causa identificada ou hipóteses consideradas;
+- correções tentadas;
+- resultado de cada tentativa;
+- solução final, caso tenha existido.
+
+Para pesquisas e informações sujeitas a mudança, preserve:
+
+- data ou período da consulta, quando disponível;
+- fontes e URLs reutilizáveis;
+- critérios usados;
+- conclusões alcançadas;
+- incertezas ou divergências;
+- aviso de que preço, disponibilidade, legislação, programação, compatibilidade ou outras informações voláteis devem ser revalidadas.
+
+## 6. Formato obrigatório da saída
+
+Entregue **somente** o prompt de transferência, sem introdução, comentários sobre o processo ou explicações posteriores.
+
+Não envolva toda a saída em um bloco de código, pois o conteúdo poderá conter seus próprios blocos de código. Delimite-a exatamente assim:
+
+`=== INÍCIO DO PROMPT DE TRANSFERÊNCIA ===`
+
+e
+
+`=== FIM DO PROMPT DE TRANSFERÊNCIA ===`
+
+Dentro desses delimitadores, use a estrutura abaixo. Mantenha todas as seções. Se alguma não se aplicar, escreva `[NÃO SE APLICA]` e uma justificativa curta; não a omita silenciosamente.
+
+---
+
+## Estrutura do prompt que será entregue ao novo chat
+
+### A. Mandato de continuidade
+
+Comece com uma instrução direta semelhante a esta, adaptada ao caso concreto:
+
+> Você está assumindo a continuidade de um trabalho iniciado em outro chat. Considere o pacote abaixo como o registro operacional da conversa anterior. Não reinicie o projeto, não repita perguntas já respondidas e não presuma acesso ao chat ou aos anexos originais. Antes de agir, identifique o estado vigente, respeite as decisões registradas e solicite apenas arquivos ou informações realmente ausentes. Diferencie fatos confirmados, implementações, testes, propostas e pendências conforme os rótulos do pacote.
+
+### B. Identificação da transferência
+
+Inclua:
+
+- título ou assunto do chat, se identificável;
+- domínio do trabalho;
+- objetivo principal;
+- frentes de trabalho existentes;
+- data da transferência, se conhecida;
+- idioma utilizado;
+- grau de cobertura: completo ou parcial;
+- limitações de acesso encontradas.
+
+### C. Contexto executivo
+
+Explique, de forma compacta mas suficiente:
+
+- o problema original;
+- o resultado pretendido;
+- por que o trabalho foi realizado;
+- onde a conversa chegou;
+- qual é o ponto exato de retomada.
+
+### D. Requisitos, restrições e preferências
+
+Relacione:
+
+- requisitos funcionais;
+- requisitos técnicos;
+- restrições;
+- premissas;
+- preferências expressas pelo usuário;
+- convenções de resposta ou desenvolvimento;
+- tags, formatos e protocolos personalizados relevantes;
+- critérios de aceite definidos ou inferíveis com segurança.
+
+Marque o que é obrigatório, desejável ou apenas contextual.
+
+### E. Histórico operacional cronológico
+
+Reconstrua a evolução do trabalho em ordem. Para cada etapa relevante, informe:
+
+1. pedido, problema ou hipótese;
+2. ação, proposta ou alteração realizada;
+3. resultado;
+4. rótulo de estado;
+5. consequência para a etapa seguinte.
+
+Preserve mudanças de direção, correções do usuário e reversões. Não reorganize a cronologia de modo que pareça que a solução final era conhecida desde o início.
+
+### F. Registro de decisões
+
+Para cada decisão material, informe:
+
+- decisão;
+- autor ou forma de aprovação, quando conhecida;
+- justificativa;
+- alternativas consideradas;
+- alternativa rejeitada ou substituída;
+- impacto;
+- condição que poderia justificar revisá-la.
+
+### G. Tentativas, falhas e aprendizados
+
+Liste todas as tentativas relevantes que não prosperaram, sem apagar o histórico. Para cada uma, informe o motivo do insucesso, o que foi aprendido e o que não deve ser repetido sem uma nova justificativa.
+
+### H. Versões e evolução dos artefatos
+
+Crie uma tabela com, no mínimo:
+
+| Ordem | Versão ou nome | Origem | Alterações principais | Teste/resultado | Estado | Relação com a versão vigente |
+|---|---|---|---|---|---|---|
+
+Depois da tabela, declare de forma inequívoca:
+
+- **Base vigente:** nome exato ou `[INCERTO]`;
+- **Por que é a base vigente:** evidência;
+- **Versões que não devem ser reutilizadas:** nomes e motivos.
+
+### I. Inventário de arquivos, anexos, links e artefatos
+
+Crie uma tabela com, no mínimo:
+
+| Item exato | Tipo | Finalidade | Conteúdo ou alteração relevante | Estado | Disponibilidade no novo chat | Ação necessária |
+|---|---|---|---|---|---|---|
+
+Inclua arquivos de entrada, arquivos finais, imagens, documentos, scripts, links e demais dependências. Destaque anexos que precisam ser enviados novamente.
+
+### J. Estado técnico e operacional atual
+
+Organize em quatro grupos:
+
+1. **O que funciona e está confirmado**;
+2. **O que foi implementado, mas ainda precisa de teste**;
+3. **O que não funciona ou apresenta regressão**;
+4. **O que foi apenas proposto ou discutido**.
+
+Inclua ambiente, versões de linguagem ou aplicativo, dependências, comandos, configurações e condições de execução quando forem relevantes.
+
+### K. Testes e evidências
+
+Crie um registro verificável dos testes executados e dos resultados. Não escreva apenas “testado”; informe o que foi testado e qual evidência sustenta a conclusão.
+
+### L. Pendências, dúvidas e riscos
+
+Separe:
+
+- pendências confirmadas;
+- dúvidas que exigem resposta do usuário;
+- incertezas decorrentes de histórico ou arquivos inacessíveis;
+- riscos de regressão;
+- informações voláteis que precisam ser atualizadas;
+- dependências externas.
+
+### M. Próximos passos priorizados
+
+Apresente uma sequência operacional, começando pela próxima ação concreta. Para cada passo, informe:
+
+- objetivo;
+- insumo necessário;
+- ação;
+- critério de conclusão;
+- dependências ou bloqueios.
+
+Não inclua etapas já concluídas como se ainda estivessem pendentes.
+
+### N. Instruções específicas para o novo assistente
+
+Inclua instruções adaptadas ao trabalho, contemplando no mínimo:
+
+- usar a base vigente, não uma versão superada;
+- preservar as funcionalidades e decisões já aprovadas;
+- não repetir tentativas que falharam sem explicar a nova hipótese;
+- pedir reanexo somente dos arquivos realmente necessários;
+- validar suposições antes de alterar algo crítico;
+- manter as convenções técnicas e de comunicação do usuário;
+- sinalizar qualquer conflito entre o pacote migrado e novas instruções;
+- considerar as novas instruções explícitas do usuário como prioritárias;
+- não afirmar acesso ao chat original.
+
+### O. Primeira ação esperada no novo chat
+
+Termine indicando exatamente como o novo assistente deve começar. Se não houver bloqueio, determine a próxima ação concreta. Se faltar um arquivo indispensável, solicite apenas esse arquivo e explique brevemente por que ele é necessário.
+
+### P. Auditoria de integridade da migração
+
+Inclua uma verificação final curta com:
+
+- histórico operacional coberto: sim, parcial ou não;
+- decisões cobertas: sim, parcial ou não;
+- falhas cobertas: sim, parcial ou não;
+- versões cobertas: sim, parcial ou não;
+- arquivos e anexos cobertos: sim, parcial ou não;
+- testes cobertos: sim, parcial ou não;
+- pendências cobertas: sim, parcial ou não;
+- limitações remanescentes;
+- risco de perda de contexto: baixo, médio ou alto, com justificativa.
+
+## 7. Controle final antes de responder
+
+Antes de emitir a saída, confira internamente:
+
+1. A saída é um prompt dirigido ao novo chat, e não um resumo dirigido ao usuário?
+2. O estado atual pode ser identificado sem consultar o chat antigo?
+3. Todas as decisões e mudanças de direção relevantes aparecem?
+4. Propostas, implementações e testes estão corretamente diferenciados?
+5. As tentativas malsucedidas e regressões foram preservadas?
+6. Todas as versões e todos os arquivos relevantes foram inventariados?
+7. A base vigente foi identificada ou a incerteza foi explicitada?
+8. Os anexos que precisam ser reenviados estão destacados?
+9. As pendências e o próximo passo estão claros?
+10. Há alguma afirmação não sustentada pelo histórico?
+11. Alguma informação foi omitida apenas para encurtar a resposta?
+12. As limitações de acesso foram declaradas honestamente?
+
+Corrija qualquer falha encontrada antes de responder.
+
+## 8. Regra para chats muito extensos
+
+Priorize completude. Comprima apenas redundâncias sem valor operacional.
+
+Se o limite de resposta impedir a entrega integral em uma única mensagem:
+
+1. divida o pacote em partes numeradas;
+2. encerre somente no final de uma seção;
+3. indique claramente `CONTINUA — PARTE X DE N`;
+4. aguarde o comando “continuar” para prosseguir;
+5. não repita nem altere as partes anteriores;
+6. mantenha os delimitadores de início na primeira parte e de fim somente na última;
+7. trate o conjunto concatenado das partes como um único prompt de transferência.
+
+Agora analise o chat de origem e produza exclusivamente o prompt de transferência conforme estas instruções.
