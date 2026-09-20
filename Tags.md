@@ -1042,3 +1042,11 @@ Trate esta tag como reforço positivo: preserve nas próximas respostas desta co
 Generalize o que funcionou, sem copiar mecanicamente a resposta anterior nem transformar escolhas circunstanciais em regras permanentes.
 
 Não reexecute nem reformule a tarefa anterior. Apenas reconheça brevemente, salvo se houver outro pedido na mesma mensagem.
+
+[anexo]
+
+Use o(s) arquivo(s) anexado(s) como base principal da tarefa. Analise o conteúdo relevante e trabalhe diretamente sobre ele(s), considerando estrutura, dados, contexto e relações entre os arquivos.
+
+Quando a tarefa envolver alteração, correção ou geração de nova versão, preserve o que não precisar ser modificado e trate o anexo como versão-base.
+
+Não presuma conteúdo que não pôde ser acessado. Sinalize brevemente qualquer limitação relevante.
