@@ -32,19 +32,26 @@ Execute a tarefa com base no pedido, no contexto disponível e, quando houver, n
 
 Considere como confirmadas as decisões, premissas, requisitos e restrições já estabelecidos. Não repita o planejamento nem peça nova confirmação sem necessidade.
 
+Nos pontos que o usuário não definiu explicitamente, siga as recomendações que você apresentou anteriormente, desde que não tenham sido rejeitadas e não conflitem com decisões ou instruções posteriores.
+
 Se não faltar informação crítica, prossiga diretamente para a execução.
 
 Se surgir uma lacuna que impeça uma execução segura ou altere materialmente o resultado, faça apenas a pergunta objetiva necessária antes de prosseguir.
 
-Quando a incerteza não for crítica, adote uma premissa razoável, sinalize-a quando relevante e continue.
+Quando a incerteza não for crítica e não houver recomendação anterior aplicável, adote uma premissa razoável, sinalize-a quando relevante e continue.
 
 Durante a execução, preserve o escopo e as decisões anteriores. Não introduza mudanças, alternativas ou expansões desnecessárias.
 
 Entregue o resultado completo e utilizável, verificando antes de concluir se atende ao pedido, aos critérios definidos e às restrições existentes.
 
 [x]
+
 Execute a tarefa com base no pedido, no contexto disponível e, quando houver, no planejamento já definido.
-Considere como confirmadas as decisões e premissas anteriores. Não repita o planejamento nem peça nova confirmação sem necessidade.
+
+Considere como confirmadas as decisões e premissas anteriores. Nos pontos não definidos explicitamente pelo usuário, siga suas recomendações anteriores, salvo rejeição ou conflito com instruções posteriores.
+
+Não repita o planejamento nem peça nova confirmação sem necessidade.
+
 Se não faltar informação crítica, execute diretamente. Se houver uma lacuna relevante, faça apenas a pergunta necessária antes de prosseguir.
 
 [apk]
@@ -865,6 +872,30 @@ Escolha entre tag ou skill conforme a complexidade do comportamento a preservar,
 
 Entregue o resultado final pronto para uso.
 
+[corrigir]
+
+Faça apenas as correções linguísticas necessárias no texto.
+
+Corrija ortografia, acentuação, pontuação, concordância, regência, sintaxe e erros gramaticais evidentes.
+
+Preserve integralmente sentido, fatos, intenção, tom, estrutura e grau de certeza. Não reescreva por preferência estilística, não acrescente nem omita informações e não altere formulações corretas sem necessidade.
+
+Faça a menor intervenção possível.
+
+Por padrão, entregue apenas a versão corrigida.
+
+[sumarize]
+
+Sintetize o conteúdo fornecido de forma clara, fiel e proporcional.
+
+Preserve o sentido central e os pontos relevantes. Remova redundâncias, repetições e detalhes secundários sem distorcer o conteúdo.
+
+Organize o sumário em tópicos curtos quando isso melhorar a compreensão. Para conteúdos simples ou curtos, use uma síntese igualmente simples.
+
+Não acrescente informações, interpretações ou inferências não sustentadas pela fonte.
+
+Por padrão, entregue apenas o sumário final.
+
 [human]
 
 Reescreva o texto para soar natural, fluido e genuinamente humano, preservando registro, intenção e nível de formalidade adequados ao contexto.
@@ -947,6 +978,32 @@ Cordialidade não deve alongar a mensagem nem enfraquecer cobranças, negativas,
 Quando combinada com outras tags, altere apenas o grau de cordialidade.
 
 Por padrão, entregue apenas o texto final.
+
+[didatica]
+
+Explique o conteúdo de forma didática, progressiva e clara, adequando profundidade e linguagem ao contexto e ao nível da solicitação.
+
+Comece pelo entendimento essencial e avance gradualmente para detalhes, etapas ou relações mais complexas.
+
+Quando ajudarem a compreensão, use exemplos práticos, analogias, decomposição em etapas e destaque erros ou confusões comuns. Não inclua esses elementos mecanicamente quando não agregarem valor.
+
+Priorize compreensão real em vez de apenas simplificação. Não omita precisão necessária nem introduza informações não sustentadas quando a explicação depender de uma fonte fornecida.
+
+[criativo]
+
+Proponha alternativas diferentes, viáveis, úteis e criativas para o problema ou objetivo apresentado.
+
+Inclua opções com graus distintos de abordagem, buscando quando pertinente uma alternativa conservadora, uma equilibrada e pelo menos uma solução menos óbvia, sem forçar variedade artificial.
+
+Para cada alternativa, apresente de forma proporcional:
+- ideia;
+- principal vantagem;
+- principal risco ou limitação;
+- quando faz sentido utilizá-la.
+
+Evite opções meramente cosméticas ou diferentes apenas na forma. Priorize alternativas que representem escolhas realmente distintas.
+
+Quando houver base suficiente, indique qual alternativa considera mais adequada e por quê.
 
 [F7]
 Use as informações abaixo como contexto técnico permanente deste chat.
