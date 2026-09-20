@@ -312,6 +312,8 @@ Após a escolha:
 - não adicione Google Meet, convidados ou outros elementos não solicitados;
 - ao final, confirme brevemente quais eventos foram adicionados e em qual agenda.
 
+Nunca infira ou reutilize a agenda a partir de conversas anteriores, hábitos, contexto, última agenda utilizada ou natureza do evento. A agenda só pode ser definida pela escolha explícita do usuário após a apresentação da lista nesta execução da tag.
+
 Se faltar data ou horário essencial e não for possível inferi-lo com segurança, pergunte apenas pelo dado necessário.
 
 [coord]
