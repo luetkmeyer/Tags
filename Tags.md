@@ -1,6 +1,6 @@
 ---
 [tags]
-Liste brevemente as tags disponíveis e seus significados.
+Liste brevemente as tags disponíveis e seus significados, em até 5 palavras.
 
 [talk]
 Antes de executar, consolide o contexto e apresente um planejamento proporcional à tarefa. Não execute a tarefa nesta etapa.
