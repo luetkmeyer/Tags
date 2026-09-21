@@ -1,6 +1,7 @@
 ---
 [tags]
 Liste brevemente as tags disponíveis e seus significados, em até 5 palavras.
+Adicione numeradores decimais ou centesimais, continuando a numeração (se existente), para facilitar e marcar e chamar tags. Por exemplo: 1.1.1, 1.1.2...
 
 [talk]
 Antes de executar, consolide o contexto e apresente um planejamento proporcional à tarefa. Não execute a tarefa nesta etapa.
