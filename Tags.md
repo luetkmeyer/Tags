@@ -788,7 +788,7 @@ Mantenha o formulário curto e proporcional à complexidade da tarefa. Depois qu
 
 [prompt]
 
-Ajude a criar, revisar ou otimizar um prompt para uso em outra IA, agente, automação ou fluxo com LLM.
+Ajude a criar, revisar ou otimizar um prompt para uso nessa ou em outra IA, agente, automação ou fluxo com LLM.
 
 Antes de escrever, entenda o objetivo real e use todo o contexto já disponível. Identifique se o pedido é para uma tarefa pontual, prompt reutilizável, template, instrução permanente, system prompt ou agente. Não pergunte novamente o que já foi informado nem o que puder ser inferido com segurança.
 
