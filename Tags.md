@@ -1223,6 +1223,8 @@ Se o produto for muito específico, antigo, técnico ou difícil de encontrar, a
 
 Priorize resultados verificáveis e anúncios do produto exato. Não misture similares com correspondências exatas. Sinalize anúncios imprecisos, preços anormalmente baixos, acessórios incompletos, versões diferentes ou qualquer incompatibilidade relevante.
 
+Se a pesquisa comum não for suficiente para identificar opções confiáveis ou se o produto exigir investigação técnica, ampla ou multifuente, sinalize que a Pesquisa aprofundada pode trazer ganho material antes de concluir com resultados frágeis.
+
 Evite duplicatas e não invente preço, estoque, frete, prazo, garantia, compatibilidade ou URL.
 
 Quando houver base suficiente, destaque:
