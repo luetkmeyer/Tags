@@ -43,6 +43,47 @@ Reescreva o texto ditado em português claro, natural e profissional. Preserve s
 [decode]
 Interprete a mensagem como fala transcrita e responda ao pedido principal. Use o contexto, ignore ruídos de oralidade e corrija mentalmente falhas inferíveis. Preserve sentido e grau de certeza. Pergunte apenas diante de ambiguidade relevante. Não comente sobre a transcrição.
 
+[contador]
+
+Analise quantitativamente o texto ou conteúdo indicado, sem alterá-lo.
+
+Quando houver ferramenta de cálculo disponível, use-a para obter contagens exatas em vez de estimá-las manualmente.
+
+Para tornar os resultados consistentes, normalize apenas os finais de linha: converta CRLF e CR para LF (\n). Não remova espaços, linhas vazias, caracteres ou conteúdo antes da contagem.
+
+Por padrão, informe:
+
+- caracteres com LF: todos os caracteres após a normalização, incluindo espaços e quebras \n;
+- caracteres sem LF: a mesma sequência removendo apenas os caracteres \n;
+- palavras: sequências não vazias separadas por whitespace;
+- linhas: número total de linhas, incluindo linhas vazias;
+- linhas não vazias;
+- LF: quantidade de caracteres \n;
+- espaços;
+- parágrafos: blocos de conteúdo separados por uma ou mais linhas vazias.
+
+Quando solicitado ou útil, também calcule:
+- caracteres sem espaços;
+- caracteres sem qualquer whitespace;
+- tabs;
+- bytes em UTF-8;
+- palavras únicas;
+- frequência de palavras ou caracteres;
+- média de caracteres ou palavras por linha, parágrafo ou outro agrupamento;
+- contagens separadas por seção, bloco, arquivo ou item.
+
+Considere texto vazio como 0 linhas. Para texto não vazio, linhas correspondem à quantidade de LF + 1, preservando eventual linha vazia final.
+
+Conte somente o conteúdo indicado como alvo. Não inclua a própria tag [contador], instruções do usuário, rótulos ou cercas Markdown usadas apenas para delimitar o conteúdo, salvo pedido explícito.
+
+Quando houver múltiplos textos ou arquivos, apresente a contagem de cada item separadamente e, quando fizer sentido, o total agregado. Não introduza separadores artificiais no total; some as métricas individuais.
+
+Em arquivos como PDF, DOCX ou imagens, se a contagem depender de extração de texto, deixe claro que as métricas correspondem ao texto extraído. Não trate linhas visuais, paginação ou OCR como equivalentes exatos ao conteúdo textual original quando isso não puder ser garantido.
+
+Se o usuário indicar uma regra específica de contagem ou exigir correspondência com um aplicativo, editor ou plataforma, essa regra prevalece.
+
+Por padrão, entregue os resultados em uma tabela compacta, sem reescrever ou resumir o conteúdo contado.
+
 [anexo]
 
 Use o(s) arquivo(s) anexado(s) como base principal da tarefa. Analise o conteúdo relevante e trabalhe diretamente sobre ele(s), considerando estrutura, dados, contexto e relações entre os arquivos.
@@ -1108,5 +1149,67 @@ PREFERÊNCIAS DE RESPOSTA
 ---
 
 [prod]
-Pesquise o produto, modelo ou categoria nesta ordem: Mercado Livre, AliExpress, Shopee, Amazon, Zoom/Buscapé e internet geral. Priorize resultados compatíveis e verificáveis. Compare preço, frete, prazo, vendedor, condição, versão e garantia. Sinalize anúncios imprecisos, similares, usados, recondicionados, importados ou de compatibilidade incerta, incluindo riscos de imposto e prazo longo. Não invente dados.
-Formato: resumo curto; tabela com site, preço, frete/prazo, observação e link; características principais; alertas; opções numeradas de refinamento.
+
+Pesquise o produto, modelo ou categoria visando encontrar opções de compra compatíveis, confiáveis e competitivas.
+
+Primeiro identifique, quando possível, o produto exato, variante, especificações e requisitos de compatibilidade. Diferencie claramente correspondências exatas de similares ou alternativas.
+
+Adapte as fontes ao tipo de produto. Pesquise, conforme relevante:
+
+1. Fabricante, loja oficial e revendedores autorizados.
+
+2. Lojas especializadas na categoria. Exemplos:
+- informática e hardware: KaBuM!, Pichau, TerabyteShop;
+- componentes eletrônicos: Mouser, DigiKey, RS, FilipeFlop e equivalentes;
+- ferramentas e construção: Loja do Mecânico, Ferramentas Kennedy, Leroy Merlin, Obramax e equivalentes;
+- automotivo: lojas especializadas em autopeças e distribuidores compatíveis com o veículo ou código da peça;
+- eletrodomésticos e eletrônicos: Fast Shop, Magazine Luiza, Casas Bahia e varejistas especializados;
+- demais categorias: identifique lojas especializadas relevantes antes de limitar a pesquisa aos grandes marketplaces.
+
+3. Marketplaces e varejo geral:
+- Mercado Livre;
+- Amazon;
+- AliExpress;
+- Shopee;
+- outros relevantes para a categoria.
+
+4. Comparadores e mecanismos de descoberta de preço:
+- Google Shopping;
+- Buscapé;
+- Zoom;
+- JáCotei ou equivalentes;
+- Promobit, Pelando e comunidades de ofertas quando úteis para histórico, promoções ou percepção de preço.
+
+Não siga uma ordem rígida quando outra fonte for claramente mais adequada ao produto. Descubra e inclua outras lojas especializadas ou mecanismos de comparação relevantes para a categoria.
+
+Compare, quando disponíveis:
+- preço e custo total estimado;
+- frete e prazo;
+- estoque;
+- vendedor e reputação;
+- condição: novo, usado, open-box ou recondicionado;
+- versão, variante e compatibilidade;
+- garantia, devolução e procedência;
+- origem nacional ou importada;
+- impostos, riscos e prazo adicional de importação.
+
+Para produtos técnicos, verifique identificadores e características que possam determinar compatibilidade, como modelo, código da peça, revisão, dimensões, conectores, tensão, geração, região ou equivalentes.
+
+Se o produto for muito específico, antigo, técnico ou difícil de encontrar, amplie a busca para distribuidores, assistência autorizada, lojas de peças, fóruns/comunidades especializadas e vendedores internacionais confiáveis.
+
+Priorize resultados verificáveis e anúncios do produto exato. Não misture similares com correspondências exatas. Sinalize anúncios imprecisos, preços anormalmente baixos, acessórios incompletos, versões diferentes ou qualquer incompatibilidade relevante.
+
+Evite duplicatas e não invente preço, estoque, frete, prazo, garantia ou compatibilidade.
+
+Quando houver base suficiente, destaque:
+- menor custo total;
+- melhor custo-benefício;
+- opção de compra mais segura;
+- melhor opção em loja especializada, quando relevante.
+
+Formato padrão:
+1. resumo curto;
+2. tabela com loja, produto/versão, preço, frete/prazo, condição e observações;
+3. características ou compatibilidade relevantes;
+4. alertas;
+5. conclusão prática e opções de refinamento.
