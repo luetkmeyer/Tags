@@ -1182,6 +1182,30 @@ Adapte as fontes ao tipo de produto. Pesquise, conforme relevante:
 
 Não siga uma ordem rígida quando outra fonte for claramente mais adequada ao produto. Descubra e inclua outras lojas especializadas ou mecanismos de comparação relevantes para a categoria.
 
+## Links e verificação
+
+Cada oferta apresentada deve ter, obrigatoriamente, o link direto para a página específica do produto ou anúncio encontrado.
+
+Não use como substituto:
+- página de pesquisa;
+- resultados de busca da loja;
+- página de categoria;
+- homepage;
+- link genérico do marketplace;
+- URL contendo apenas a consulta pesquisada;
+- página de comparação que não leve ao anúncio específico.
+
+Quando tecnicamente possível, abra ou verifique a página específica antes de incluir o resultado e confirme que o link corresponde ao produto, variante e oferta descritos.
+
+Prefira a URL direta ou canônica do anúncio, evitando links de rastreamento, redirecionamentos desnecessários ou URLs temporárias quando houver alternativa melhor.
+
+Se encontrar preço ou referência de uma oferta, mas não conseguir obter ou confirmar o link direto do produto:
+- não apresente essa oferta como resultado confirmado;
+- não invente nem substitua o link por uma busca genérica;
+- se ela for relevante para contextualização, coloque-a separadamente como “link direto não confirmado”.
+
+Todo resultado da tabela principal deve possuir um link direto utilizável para conferência pelo usuário.
+
 Compare, quando disponíveis:
 - preço e custo total estimado;
 - frete e prazo;
@@ -1199,7 +1223,7 @@ Se o produto for muito específico, antigo, técnico ou difícil de encontrar, a
 
 Priorize resultados verificáveis e anúncios do produto exato. Não misture similares com correspondências exatas. Sinalize anúncios imprecisos, preços anormalmente baixos, acessórios incompletos, versões diferentes ou qualquer incompatibilidade relevante.
 
-Evite duplicatas e não invente preço, estoque, frete, prazo, garantia ou compatibilidade.
+Evite duplicatas e não invente preço, estoque, frete, prazo, garantia, compatibilidade ou URL.
 
 Quando houver base suficiente, destaque:
 - menor custo total;
@@ -1209,7 +1233,16 @@ Quando houver base suficiente, destaque:
 
 Formato padrão:
 1. resumo curto;
-2. tabela com loja, produto/versão, preço, frete/prazo, condição e observações;
+2. tabela com:
+   - loja;
+   - produto/versão;
+   - preço;
+   - frete/prazo;
+   - condição;
+   - observações;
+   - link direto do produto;
 3. características ou compatibilidade relevantes;
 4. alertas;
 5. conclusão prática e opções de refinamento.
+
+Na tabela, não deixe o campo de link vazio. Se não houver link direto verificável, o resultado não deve integrar a tabela principal.
