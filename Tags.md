@@ -3,6 +3,24 @@
 Liste brevemente as tags disponíveis e seus significados, em até 5 palavras.
 Adicione numeradores decimais ou centesimais, continuando a numeração (se existente), para facilitar e marcar e chamar tags. Por exemplo: 1.1.1, 1.1.2...
 
+[plan]
+
+Apresente um planejamento visual, objetivo e operacional antes da execução.
+
+Inclua obrigatoriamente pelo menos uma representação visual adequada ao problema, como fluxograma ou diagrama Mermaid, roadmap, árvore de decisão, sequência de etapas, arquitetura em blocos, esquema hierárquico ou equivalente.
+
+Use o visual como elemento principal. Complemente apenas com informações necessárias para tornar o plano compreensível e executável: etapas, decisões, dependências, riscos, entradas, saídas, critérios de conclusão ou próximos passos.
+
+Prefira síntese. Evite repetir o pedido, explicar o óbvio, criar seções excessivas ou detalhar pontos que não alterem o planejamento.
+
+Quando houver sequência operacional, deixe clara a ordem, as dependências e os pontos de decisão relevantes.
+
+Para lacunas não críticas, adote premissas razoáveis e identifique-as quando relevante. Se houver lacunas críticas, sinalize-as objetivamente. Pergunte somente quando uma informação for indispensável para produzir um planejamento útil.
+
+Não execute a tarefa.
+
+Quando combinada com outras tags, [plan] determina a forma visual do planejamento; profundidade, interação e demais critérios permanecem definidos pelas outras tags. Com [talk], mantenha a visualização obrigatória e aplique o nível de análise e interação definido por [talk].
+
 [talk]
 Antes de executar, consolide o contexto e apresente um planejamento proporcional à tarefa. Não execute a tarefa nesta etapa.
 Use só recursos úteis: blueprint, roadmap, plano de execução, diagramas Mermaid ou registro de decisões. Considere, quando necessário: objetivo, escopo, requisitos, restrições, premissas, dependências, decisões, riscos, alternativas, recomendação, critérios de aceite e definição de concluído.
@@ -1248,21 +1266,3 @@ Formato padrão:
 5. conclusão prática e opções de refinamento.
 
 Na tabela, não deixe o campo de link vazio. Se não houver link direto verificável, o resultado não deve integrar a tabela principal.
-
-[plan]
-
-Apresente um planejamento visual, objetivo e operacional antes da execução.
-
-Inclua obrigatoriamente pelo menos uma representação visual adequada ao problema, como fluxograma ou diagrama Mermaid, roadmap, árvore de decisão, sequência de etapas, arquitetura em blocos, esquema hierárquico ou equivalente.
-
-Use o visual como elemento principal. Complemente apenas com informações necessárias para tornar o plano compreensível e executável: etapas, decisões, dependências, riscos, entradas, saídas, critérios de conclusão ou próximos passos.
-
-Prefira síntese. Evite repetir o pedido, explicar o óbvio, criar seções excessivas ou detalhar pontos que não alterem o planejamento.
-
-Quando houver sequência operacional, deixe clara a ordem, as dependências e os pontos de decisão relevantes.
-
-Para lacunas não críticas, adote premissas razoáveis e identifique-as quando relevante. Se houver lacunas críticas, sinalize-as objetivamente. Pergunte somente quando uma informação for indispensável para produzir um planejamento útil.
-
-Não execute a tarefa.
-
-Quando combinada com outras tags, [plan] determina a forma visual do planejamento; profundidade, interação e demais critérios permanecem definidos pelas outras tags. Com [talk], mantenha a visualização obrigatória e aplique o nível de análise e interação definido por [talk].
