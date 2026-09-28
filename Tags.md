@@ -952,6 +952,161 @@ Princípio geral:
 
 ---
 
+[rascunho]
+
+Transforme o contexto disponível em um e-mail profissional por meio de um fluxo obrigatório em duas interações. Ao final, crie o rascunho no Gmail.
+
+Conta padrão:
+engenharias@univag.edu.br
+
+## FLUXO OBRIGATÓRIO
+
+PRIMEIRA INTERAÇÃO
+Contexto disponível + [rascunho]
+        ↓
+Identificar informações já existentes
+        ↓
+Pré-preencher os campos
+        ↓
+Apresentar visualmente o fluxo
+        ↓
+Exibir esboço pré-preenchido
+        ↓
+Solicitar somente complementos úteis
+        ↓
+AGUARDAR USUÁRIO
+        ↓
+SEGUNDA INTERAÇÃO
+Novos dados / correções
+        ↓
+Consolidar com o contexto anterior
+        ↓
+Aplicar padrão [work]
+        ↓
+Redigir versão final
+        ↓
+Criar rascunho no Gmail
+        ↓
+Confirmar criação — NÃO ENVIAR
+
+## Primeira interação — obrigatória
+
+Quando esta tag for chamada inicialmente:
+
+1. Analise todo o contexto relevante já disponível na conversa.
+
+2. Identifique e extraia, quando existirem:
+- conta;
+- destinatário;
+- assunto provável;
+- contexto;
+- objetivo;
+- datas;
+- horários;
+- locais;
+- condições;
+- justificativas;
+- restrições;
+- outras informações pertinentes.
+
+3. Não pergunte novamente informações que já estejam disponíveis.
+
+4. A primeira resposta deve começar mostrando explicitamente o fluxo de trabalho por meio de um organograma, fluxograma Mermaid ou representação visual equivalente.
+
+O visual deve deixar claro, no mínimo:
+
+Contexto → identificação dos dados → esboço pré-preenchido → complementação do usuário → versão final [work] → rascunho Gmail.
+
+5. Depois do fluxograma, apresente o esboço pré-preenchido:
+
+Conta:
+engenharias@univag.edu.br
+
+Destinatário:
+{{identificado no contexto ou [PREENCHER]}}
+
+Assunto provável:
+{{sugestão baseada no contexto ou [PREENCHER]}}
+
+Contexto:
+{{síntese objetiva do que já foi identificado}}
+
+Objetivo:
+{{pedido ou finalidade identificada}}
+
+Informações adicionais:
+{{datas, horários, locais, condições e demais dados encontrados}}
+
+Pendências:
+{{somente informações ainda úteis ou necessárias}}
+
+6. Informe que o usuário pode:
+- complementar os campos;
+- corrigir qualquer informação;
+- substituir dados;
+- simplesmente enviar novas informações em texto livre.
+
+7. Informe explicitamente que as novas informações serão incorporadas e que a versão final será redigida aplicando o padrão da tag [work].
+
+8. Não redija ainda o e-mail definitivo.
+
+9. Não crie o rascunho nessa primeira interação.
+
+10. Pare e aguarde a resposta do usuário.
+
+## Segunda interação — consolidação e execução
+
+Quando o usuário fornecer complementos, correções ou autorizar a continuidade:
+
+1. Consolide:
+- contexto original;
+- dados identificados na primeira interação;
+- complementos;
+- correções;
+- novas instruções.
+
+2. Informações novas complementam as anteriores.
+
+3. Correções explícitas do usuário substituem informações anteriores.
+
+4. Não repita perguntas já respondidas.
+
+5. Aplique o comportamento da tag [work] à versão final:
+- profissional;
+- clara;
+- objetiva;
+- natural;
+- adequada ao interlocutor;
+- sem burocratização desnecessária.
+
+6. Preserve fatos, intenção, pedidos, restrições e grau de certeza.
+
+7. Não invente informações.
+
+8. Estruture preferencialmente:
+contexto breve → pedido principal → dados necessários → fechamento.
+
+9. Crie ou ajuste o assunto conforme necessário.
+
+10. Por padrão, crie o rascunho na conta:
+engenharias@univag.edu.br
+
+11. Nunca envie o e-mail sem solicitação explícita.
+
+12. Após criar o rascunho, confirme apenas:
+- conta utilizada;
+- destinatário;
+- assunto;
+- rascunho criado;
+- não enviado.
+
+## Lacunas
+
+- Para lacunas não críticas, prossiga com o que estiver disponível.
+- Na primeira interação, use [PREENCHER] somente quando o dado não puder ser identificado.
+- Pergunte apenas pelo que alterar materialmente o e-mail ou impedir a criação correta do rascunho.
+- O usuário não precisa responder no formato do formulário.
+
 [corrigir]
 
 Faça apenas as correções linguísticas necessárias no texto.
@@ -1266,158 +1421,3 @@ Formato padrão:
 5. conclusão prática e opções de refinamento.
 
 Na tabela, não deixe o campo de link vazio. Se não houver link direto verificável, o resultado não deve integrar a tabela principal.
-
-[rascunho]
-
-Transforme o contexto disponível em um e-mail profissional por meio de um fluxo obrigatório em duas interações. Ao final, crie o rascunho no Gmail.
-
-Conta padrão:
-engenharias@univag.edu.br
-
-## FLUXO OBRIGATÓRIO
-
-PRIMEIRA INTERAÇÃO
-Contexto disponível + [rascunho]
-        ↓
-Identificar informações já existentes
-        ↓
-Pré-preencher os campos
-        ↓
-Apresentar visualmente o fluxo
-        ↓
-Exibir esboço pré-preenchido
-        ↓
-Solicitar somente complementos úteis
-        ↓
-AGUARDAR USUÁRIO
-        ↓
-SEGUNDA INTERAÇÃO
-Novos dados / correções
-        ↓
-Consolidar com o contexto anterior
-        ↓
-Aplicar padrão [work]
-        ↓
-Redigir versão final
-        ↓
-Criar rascunho no Gmail
-        ↓
-Confirmar criação — NÃO ENVIAR
-
-## Primeira interação — obrigatória
-
-Quando esta tag for chamada inicialmente:
-
-1. Analise todo o contexto relevante já disponível na conversa.
-
-2. Identifique e extraia, quando existirem:
-- conta;
-- destinatário;
-- assunto provável;
-- contexto;
-- objetivo;
-- datas;
-- horários;
-- locais;
-- condições;
-- justificativas;
-- restrições;
-- outras informações pertinentes.
-
-3. Não pergunte novamente informações que já estejam disponíveis.
-
-4. A primeira resposta deve começar mostrando explicitamente o fluxo de trabalho por meio de um organograma, fluxograma Mermaid ou representação visual equivalente.
-
-O visual deve deixar claro, no mínimo:
-
-Contexto → identificação dos dados → esboço pré-preenchido → complementação do usuário → versão final [work] → rascunho Gmail.
-
-5. Depois do fluxograma, apresente o esboço pré-preenchido:
-
-Conta:
-engenharias@univag.edu.br
-
-Destinatário:
-{{identificado no contexto ou [PREENCHER]}}
-
-Assunto provável:
-{{sugestão baseada no contexto ou [PREENCHER]}}
-
-Contexto:
-{{síntese objetiva do que já foi identificado}}
-
-Objetivo:
-{{pedido ou finalidade identificada}}
-
-Informações adicionais:
-{{datas, horários, locais, condições e demais dados encontrados}}
-
-Pendências:
-{{somente informações ainda úteis ou necessárias}}
-
-6. Informe que o usuário pode:
-- complementar os campos;
-- corrigir qualquer informação;
-- substituir dados;
-- simplesmente enviar novas informações em texto livre.
-
-7. Informe explicitamente que as novas informações serão incorporadas e que a versão final será redigida aplicando o padrão da tag [work].
-
-8. Não redija ainda o e-mail definitivo.
-
-9. Não crie o rascunho nessa primeira interação.
-
-10. Pare e aguarde a resposta do usuário.
-
-## Segunda interação — consolidação e execução
-
-Quando o usuário fornecer complementos, correções ou autorizar a continuidade:
-
-1. Consolide:
-- contexto original;
-- dados identificados na primeira interação;
-- complementos;
-- correções;
-- novas instruções.
-
-2. Informações novas complementam as anteriores.
-
-3. Correções explícitas do usuário substituem informações anteriores.
-
-4. Não repita perguntas já respondidas.
-
-5. Aplique o comportamento da tag [work] à versão final:
-- profissional;
-- clara;
-- objetiva;
-- natural;
-- adequada ao interlocutor;
-- sem burocratização desnecessária.
-
-6. Preserve fatos, intenção, pedidos, restrições e grau de certeza.
-
-7. Não invente informações.
-
-8. Estruture preferencialmente:
-contexto breve → pedido principal → dados necessários → fechamento.
-
-9. Crie ou ajuste o assunto conforme necessário.
-
-10. Por padrão, crie o rascunho na conta:
-engenharias@univag.edu.br
-
-11. Nunca envie o e-mail sem solicitação explícita.
-
-12. Após criar o rascunho, confirme apenas:
-- conta utilizada;
-- destinatário;
-- assunto;
-- rascunho criado;
-- não enviado.
-
-## Lacunas
-
-- Para lacunas não críticas, prossiga com o que estiver disponível.
-- Na primeira interação, use [PREENCHER] somente quando o dado não puder ser identificado.
-- Pergunte apenas pelo que alterar materialmente o e-mail ou impedir a criação correta do rascunho.
-- O usuário não precisa responder no formato do formulário.
