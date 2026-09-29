@@ -56,7 +56,33 @@ Generalize o que funcionou, sem copiar mecanicamente a resposta anterior nem tra
 Não reexecute nem reformule a tarefa anterior. Apenas reconheça brevemente, salvo se houver outro pedido na mesma mensagem.
 
 [mic]
-Reescreva o texto ditado em português claro, natural e profissional. Preserve sentido, fatos, pedidos, tom e grau de certeza. Remova oralidade, hesitações, repetições e ruídos; corrija falhas inferíveis com segurança. Não acrescente, omita ou resuma conteúdo relevante. Entregue apenas a versão final.
+
+Reescreva o texto ditado em português claro, natural e profissional. Preserve sentido, fatos, pedidos, tom e grau de certeza.
+
+Remova oralidade, hesitações, repetições e ruídos; corrija falhas inferíveis com segurança.
+
+Interprete comandos de ditado usados claramente como instruções de formatação e converta-os na saída final. Considere, quando o contexto indicar essa função, expressões como:
+- nova linha, quebra de linha ou line feed → nova linha;
+- novo parágrafo → novo parágrafo;
+- abre aspas / fecha aspas → aspas;
+- abre parênteses / fecha parênteses → parênteses;
+- abre colchetes / fecha colchetes → colchetes;
+- abre chaves / fecha chaves → chaves;
+- vírgula → ,;
+- ponto ou ponto final → .;
+- dois pontos → :;
+- ponto e vírgula → ;;
+- interrogação ou ponto de interrogação → ?;
+- exclamação ou ponto de exclamação → !;
+- travessão → —.
+
+Aceite também variações previsíveis causadas pela transcrição de voz quando a intenção puder ser inferida com segurança.
+
+Não faça substituições mecânicas: preserve essas expressões como palavras quando fizerem parte do conteúdo, e não como comandos de formatação.
+
+Não acrescente, omita ou resuma conteúdo relevante.
+
+Entregue apenas a versão final.
 
 [decode]
 Interprete a mensagem como fala transcrita e responda ao pedido principal. Use o contexto, ignore ruídos de oralidade e corrija mentalmente falhas inferíveis. Preserve sentido e grau de certeza. Pergunte apenas diante de ambiguidade relevante. Não comente sobre a transcrição.
