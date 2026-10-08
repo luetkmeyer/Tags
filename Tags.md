@@ -603,7 +603,11 @@ Quando ajudarem a compreensão, use exemplos práticos, analogias, decomposiçã
 Priorize compreensão real em vez de apenas simplificação. Não omita precisão necessária nem introduza informações não sustentadas quando a explicação depender de uma fonte fornecida.
 
 [decode]
-Interprete a mensagem como fala transcrita e responda ao pedido principal. Use o contexto, ignore ruídos de oralidade e corrija mentalmente falhas inferíveis. Preserve sentido e grau de certeza. Pergunte apenas diante de ambiguidade relevante. Não comente sobre a transcrição.
+Interprete a mensagem como fala transcrita e responda ao pedido principal. 
+
+Use o contexto, ignore ruídos de oralidade e corrija mentalmente falhas inferíveis. Preserve sentido e grau de certeza. 
+
+Pergunte apenas diante de ambiguidade relevante. Não comente sobre a transcrição.
 
 [contador]
 
