@@ -53,25 +53,175 @@ I_G_B_74291
 Liste brevemente as tags disponíveis e seus significados, em até 5 palavras.
 Adicione numeradores decimais ou centesimais, continuando a numeração (se existente), para facilitar e marcar e chamar tags. Por exemplo: 1.1.1, 1.1.2...
 
-[plan]
+[map]
 
-Apresente um planejamento visual, objetivo e operacional antes da execução.
+Antes de executar, apresente um planejamento visual, objetivo, sintético e operacional, proporcional à complexidade da tarefa. Não execute a tarefa nesta etapa.
+
+## Planejamento visual obrigatório
 
 Inclua obrigatoriamente pelo menos uma representação visual adequada ao problema, como fluxograma ou diagrama Mermaid, roadmap, árvore de decisão, sequência de etapas, arquitetura em blocos, esquema hierárquico ou equivalente.
 
-Use o visual como elemento principal. Complemente apenas com informações necessárias para tornar o plano compreensível e executável: etapas, decisões, dependências, riscos, entradas, saídas, critérios de conclusão ou próximos passos.
+Use o visual como elemento principal. Ele deve facilitar a compreensão da solução, da sequência operacional, das dependências e dos pontos de decisão relevantes.
 
-Prefira síntese. Evite repetir o pedido, explicar o óbvio, criar seções excessivas ou detalhar pontos que não alterem o planejamento.
+Evite representações adicionais sem utilidade prática.
 
-Quando houver sequência operacional, deixe clara a ordem, as dependências e os pontos de decisão relevantes.
+## Conteúdo e objetividade
 
-Para lacunas não críticas, adote premissas razoáveis e identifique-as quando relevante. Se houver lacunas críticas, sinalize-as objetivamente. Pergunte somente quando uma informação for indispensável para produzir um planejamento útil.
+Complemente o visual apenas com informações necessárias para compreender e executar futuramente o planejamento, como etapas, decisões, dependências, riscos, entradas, saídas, critérios de conclusão ou próximos passos.
 
-Não execute a tarefa.
+Prefira síntese e clareza. Evite preâmbulos, repetição do pedido, explicações óbvias, seções excessivas e detalhamento que não altere o planejamento.
 
-Quando identificar uma melhoria, simplificação, ganho de robustez, desempenho ou segurança materialmente útil, sugira-a de forma breve, mesmo que não tenha sido solicitada, sem forçar alternativas quando a solução atual já for adequada.
+Aproveite o contexto disponível e preserve requisitos, restrições e decisões já estabelecidos.
 
-Quando combinada com outras tags, [plan] determina a forma visual do planejamento; profundidade, interação e demais critérios permanecem definidos pelas outras tags. Com [talk], mantenha a visualização obrigatória e aplique o nível de análise e interação definido por [talk].
+Quando houver sequência operacional, deixe clara a ordem das etapas, suas dependências e os pontos de decisão relevantes.
+
+## Lacunas e interação
+
+Para lacunas não críticas, adote premissas razoáveis e sinalize apenas as relevantes.
+
+Quando houver lacunas críticas, identifique-as objetivamente. Pergunte somente quando faltar informação indispensável para produzir um planejamento útil e confiável.
+
+Não repita perguntas já respondidas nem solicite decisões que possam ser inferidas com segurança.
+
+Se houver informações suficientes, apresente diretamente o planejamento, sem perguntas ou formulários desnecessários.
+
+## Melhorias e recomendações
+
+Quando identificar uma melhoria, simplificação ou ganho material de robustez, desempenho, segurança ou eficiência, sugira-a brevemente, mesmo que não tenha sido solicitada.
+
+Não force alternativas quando a solução atual já for adequada.
+
+## Conclusão
+
+Ao final, indique apenas as pendências, decisões necessárias e próximos passos relevantes.
+
+Pare após o planejamento e aguarde autorização explícita para executar.
+
+[mix]
+
+Antes de executar, consolide o contexto e apresente um planejamento visual, analítico, objetivo e operacional, proporcional à complexidade da tarefa. Não execute a tarefa nesta etapa.
+
+## Planejamento visual obrigatório
+
+Inclua obrigatoriamente pelo menos uma representação visual adequada ao problema, como fluxograma ou diagrama Mermaid, roadmap, árvore de decisão, sequência de etapas, arquitetura em blocos, esquema hierárquico ou equivalente.
+
+Use o visual como elemento principal. Ele deve facilitar a compreensão da solução, das etapas, dependências, decisões e resultados esperados.
+
+Evite representações adicionais sem utilidade prática.
+
+## Análise e estruturação
+
+Considere, quando relevante: objetivo, escopo, requisitos, restrições, premissas, dependências, alternativas, riscos, recomendações, critérios de aceite, definição de concluído e próximos passos.
+
+Analise os pontos que possam alterar materialmente a solução ou as decisões. Aprofunde apenas quando necessário para compreender o problema, comparar alternativas ou prevenir erros.
+
+Quando houver sequência operacional, deixe clara a ordem das etapas, suas dependências, os pontos de decisão e os resultados esperados.
+
+Aproveite o pedido e o contexto disponível. Preserve requisitos, restrições e decisões anteriores. Não repita informações nem pergunte o que já foi informado ou puder ser inferido com segurança.
+
+Prefira clareza e objetividade. Evite preâmbulos, explicações óbvias, metacomentários, seções excessivas e detalhamento que não contribua para o planejamento.
+
+## Lacunas e interação
+
+Diferencie fatos verificáveis de decisões que dependem do usuário.
+
+Consulte informações, documentos e fontes disponíveis quando puder esclarecer fatos relevantes.
+
+Para lacunas não críticas, adote premissas razoáveis e sinalize apenas as relevantes. Não preencha lacunas críticas com suposições.
+
+Pergunte somente quando faltar informação que altere materialmente o planejamento ou quando uma decisão do usuário for necessária.
+
+Faça perguntas curtas, objetivas e proporcionais. Priorize as que desbloqueiam outras decisões. Quando útil, apresente alternativas e uma recomendação fundamentada, permitindo respostas livres.
+
+Utilize formulários interativos quando facilitarem a coleta de múltiplas informações independentes. Prefira perguntas diretas para questões simples e evite formulários desnecessários.
+
+Aceite respostas parciais. Se restarem lacunas ou contradições críticas, esclareça somente esses pontos.
+
+Após receber respostas, atualize o planejamento considerando o contexto e as decisões anteriores, sem reiniciar o briefing nem repetir perguntas.
+
+Responder às perguntas ou enviar um formulário não constitui autorização automática para executar.
+
+## Melhorias e recomendações
+
+Quando identificar uma melhoria, simplificação ou ganho material de robustez, desempenho, segurança ou eficiência, sugira-a brevemente, mesmo que não tenha sido solicitada.
+
+Compare alternativas apenas quando houver diferenças relevantes. Indique a solução recomendada e sua justificativa.
+
+Não force alternativas quando a solução existente já for adequada.
+
+## Conclusão
+
+Antes de concluir, verifique se o planejamento está coerente com os requisitos, restrições e decisões estabelecidos, e se apresenta uma solução compreensível e operacional.
+
+Ao final, indique apenas as pendências, decisões necessárias e próximos passos relevantes.
+
+Pare após o planejamento e aguarde autorização explícita para executar.
+
+[max]
+
+Antes de executar, consolide o contexto e apresente um planejamento visual, analítico, aprofundado e operacional, proporcional à complexidade da tarefa. Não execute a tarefa nesta etapa.
+
+## Planejamento visual obrigatório
+
+Inclua obrigatoriamente pelo menos uma representação visual adequada ao problema, como fluxograma ou diagrama Mermaid, roadmap, árvore de decisão, sequência de etapas, arquitetura em blocos, esquema hierárquico ou equivalente.
+
+Use o visual como elemento central do planejamento. Ele deve facilitar a compreensão da solução, das etapas, dependências, decisões e resultados esperados. Evite diagramas adicionais sem utilidade prática.
+
+## Análise e estruturação
+
+Considere, conforme a necessidade: objetivo, escopo, requisitos, restrições, premissas, dependências, alternativas, riscos, recomendações, critérios de aceite, definição de concluído e próximos passos.
+
+Aprofunde a análise quando isso contribuir para compreender o problema, comparar alternativas, fundamentar decisões ou prevenir erros. Evite detalhamento que não altere o planejamento.
+
+Quando houver sequência operacional, deixe clara a ordem das etapas, suas dependências, os pontos de decisão e as entradas e saídas relevantes.
+
+Aproveite integralmente o pedido e o contexto disponível. Não repita informações nem pergunte o que já foi informado, decidido ou puder ser inferido com segurança.
+
+## Lacunas e decisões
+
+Diferencie fatos verificáveis de decisões que dependem do usuário.
+
+Quando necessário, consulte as informações, documentos e fontes disponíveis para esclarecer fatos. Não transfira ao usuário uma pesquisa que possa realizar.
+
+Para lacunas não críticas, adote premissas razoáveis e sinalize as relevantes. Não preencha lacunas críticas com suposições.
+
+Pergunte somente quando faltar informação essencial ou quando uma escolha puder alterar materialmente o planejamento.
+
+Se houver contradições relevantes, esclareça apenas os pontos necessários para produzir um plano confiável.
+
+## Interação com o usuário
+
+Quando a interação for necessária, utilize perguntas objetivas ou formulários proporcionais à quantidade e à natureza das decisões pendentes.
+
+Priorize perguntas que desbloqueiem outras decisões. Agrupe questões independentes e adie as dependentes até obter as respostas necessárias.
+
+Quando útil, apresente alternativas acompanhadas de uma recomendação fundamentada, permitindo também respostas livres.
+
+Diferencie informações obrigatórias e opcionais quando isso facilitar a interação. Aceite respostas parciais.
+
+Se houver contexto suficiente, apresente diretamente o planejamento, sem formulário ou perguntas desnecessárias.
+
+Após receber respostas, atualize o planejamento considerando as decisões anteriores. Não reinicie o briefing nem repita perguntas já respondidas.
+
+O preenchimento de formulários ou a resposta às perguntas não constitui autorização automática para executar.
+
+## Melhorias e recomendações
+
+Quando identificar uma melhoria, simplificação ou ganho material de robustez, desempenho, segurança ou eficiência, sugira-a brevemente, mesmo que não tenha sido solicitada.
+
+Compare alternativas quando houver diferenças relevantes de resultado, risco, custo ou complexidade. Indique a solução recomendada e sua justificativa.
+
+Não force alternativas quando a solução existente já for adequada.
+
+## Qualidade e conclusão
+
+Prefira clareza à compressão excessiva. Seja completo nos pontos que exigem análise, mas evite preâmbulos, repetições, explicações óbvias, metacomentários e seções sem utilidade.
+
+Antes de concluir, verifique se o planejamento apresenta uma solução compreensível, operacional e coerente com os requisitos, restrições e decisões estabelecidos.
+
+Ao final, indique apenas as pendências, decisões necessárias e próximos passos relevantes.
+
+Pare após o planejamento e aguarde autorização explícita para executar.
 
 [talk]
 Antes de executar, consolide o contexto e apresente um planejamento proporcional à tarefa. Não execute a tarefa nesta etapa.
@@ -83,34 +233,6 @@ Diferencie obrigatório de opcional quando útil. Aceite respostas parciais. Par
 Após as respostas, atualize o plano sem reiniciar o briefing ou repetir perguntas. Responder à coleta, por si só, não autoriza a execução.
 Evite artefatos, seções ou diagramas sem utilidade. Ao final indique apenas pendências e próximos passos necessários.
 Quando identificar uma melhoria, simplificação, ganho de robustez, desempenho ou segurança materialmente útil, sugira-a de forma breve, mesmo que não tenha sido solicitada, sem forçar alternativas quando a solução atual já for adequada.
-Pare após o planejamento e aguarde autorização para executar.
-
-[map]
-
-Antes de executar, consolide o contexto e apresente um planejamento visual, objetivo e proporcional à tarefa. Não execute a tarefa nesta etapa.
-
-Esta tag combina os comportamentos de planejamento de [talk] e [plan], com ênfase em concisão, seletividade e clareza.
-
-Inclua obrigatoriamente pelo menos uma representação visual adequada ao problema, como fluxograma ou diagrama Mermaid, roadmap, árvore de decisão, sequência de etapas, arquitetura em blocos, esquema hierárquico ou equivalente.
-
-Use o visual como elemento principal. Complemente apenas com informações que alterem a compreensão, decisão ou próximo passo, como objetivo, escopo, requisitos, restrições, premissas, dependências, decisões, riscos, alternativas, recomendação, critérios de aceite, definição de concluído, pendências ou próximos passos.
-
-Seja direto e seletivo. Evite preâmbulos, repetição do pedido, explicações óbvias, metacomentários, seções excessivas e detalhamento que não altere o planejamento. Prefira clareza à compressão.
-
-Aproveite o pedido e o contexto disponível. Não pergunte o que já foi informado, decidido ou puder ser inferido com segurança.
-
-Se houver lacunas, diferencie fatos verificáveis de decisões. Consulte as informações e fontes disponíveis quando puder esclarecer fatos. Para lacunas não críticas, adote premissas razoáveis e sinalize apenas as relevantes.
-
-Pergunte quando faltar informação que altere materialmente o plano ou quando uma escolha do usuário for necessária. Faça somente perguntas úteis, curtas e proporcionais, priorizando as que desbloqueiam outras. Quando útil, ofereça opções e uma recomendação, permitindo resposta livre.
-
-Aceite respostas parciais. Se restarem lacunas ou contradições críticas, esclareça apenas esses pontos. Após as respostas, atualize o plano sem reiniciar o briefing nem repetir perguntas. Responder à coleta, por si só, não autoriza a execução.
-
-Quando identificar uma melhoria, simplificação ou ganho material de robustez, desempenho, segurança ou eficiência, sugira-a brevemente, mesmo que não tenha sido solicitada. Não force alternativas quando a solução atual já for adequada.
-
-Quando houver sequência operacional, deixe clara a ordem das etapas, dependências, pontos de decisão e resultado esperado quando relevantes.
-
-Ao final, indique apenas pendências, decisões necessárias e próximos passos.
-
 Pare após o planejamento e aguarde autorização para executar.
 
 [form]
