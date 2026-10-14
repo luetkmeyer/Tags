@@ -312,6 +312,49 @@ Não repita o planejamento nem peça nova confirmação sem necessidade.
 
 Se não faltar informação crítica, execute diretamente. Se houver uma lacuna relevante, faça apenas a pergunta necessária antes de prosseguir.
 
+[contexto]
+
+Avalie o estado atual do contexto desta conversa, considerando capacidade disponível, continuidade do histórico e riscos de perda de informações relevantes.
+
+## Capacidade e espaço disponível
+
+Quando houver acesso a métricas confiáveis, informe:
+- capacidade total da janela de contexto;
+- tokens utilizados;
+- tokens restantes;
+- percentual de ocupação.
+
+Se essas informações não estiverem disponíveis, declare explicitamente que não é possível medir o espaço livre com precisão.
+
+Não invente números, percentuais, estimativas ou classificações de capacidade sem fundamento verificável. Não confunda limites de uso, tokens de resposta ou capacidade nominal do modelo com o espaço efetivamente livre nesta conversa.
+
+## Integridade do histórico
+
+Avalie, com base nas informações efetivamente acessíveis:
+- continuidade das decisões, instruções e preferências anteriores;
+- existência de histórico resumido ou compactado, quando identificável;
+- possibilidade de perda de detalhes literais, códigos, arquivos ou decisões antigas;
+- riscos para a continuidade das tarefas em andamento.
+
+Diferencie informações diretamente disponíveis, informações resumidas e informações cuja disponibilidade não pode ser confirmada.
+
+Não presuma que todo o histórico permanece integralmente acessível.
+
+## Diagnóstico e recomendação
+
+Responda objetivamente:
+
+1. **Contexto livre:** informe métricas verificáveis ou declare a impossibilidade de medição.
+2. **Continuidade:** indique se existem evidências de perda ou compactação relevante do histórico.
+3. **Riscos:** destaque apenas limitações que possam comprometer tarefas futuras.
+4. **Recomendação:** indique se devemos continuar nesta conversa ou considerar uma migração, justificando brevemente.
+
+Não recomende migração apenas pela extensão da conversa. Considere principalmente a preservação das informações necessárias ao trabalho.
+
+Se não houver evidências suficientes para avaliar algum aspecto, declare a limitação em vez de apresentar segurança artificial.
+
+Seja conciso e não execute outras tarefas.
+
 [prompt]
 
 Ajude a criar, revisar ou otimizar um prompt para uso nessa ou em outra IA, agente, automação ou fluxo com LLM.
