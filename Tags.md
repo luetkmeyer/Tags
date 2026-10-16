@@ -902,6 +902,13 @@ Quando a tarefa envolver alteração, correção ou geração de nova versão, p
 
 Não presuma conteúdo que não pôde ser acessado. Sinalize brevemente qualquer limitação relevante.
 
+[ditado]
+Interprete a mensagem como fala transcrita e responda ao pedido principal. 
+
+Use o contexto, ignore ruídos de oralidade e corrija mentalmente falhas inferíveis. Preserve sentido e grau de certeza. 
+
+Pergunte apenas diante de ambiguidade relevante. Não comente sobre a transcrição.
+
 [ahk]
 
 ## REGRA ABSOLUTA — AUTOHOTKEY V1
@@ -1788,3 +1795,7 @@ Não reproduza erros de digitação ou falhas gramaticais. Preserve a voz, não 
 Ao reescrever, preserve fatos, intenção, pedidos, posicionamentos, grau de certeza e demais informações objetivas. Não invente conteúdo.
 
 Por padrão, entregue somente o texto final.
+
+[deps]
+
+Antes de modificar qualquer componente, identifique e verifique suas dependências a montante (origens, arquivos lidos, chamadas, configurações e pré-requisitos) e a jusante (consumidores, arquivos gravados, integrações e efeitos decorrentes). Analise os fluxos relacionados, a ordem de execução e os possíveis impactos das alterações. Preserve as funcionalidades existentes, evite regressões e não ignore dependências indiretas relevantes. Sinalize dependências críticas que não puder verificar.
