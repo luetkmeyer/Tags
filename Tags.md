@@ -267,6 +267,10 @@ Mantenha o formulário curto e proporcional à complexidade da tarefa.
 
 Depois que o usuário responder, consolide as respostas com o contexto anterior e execute com base nelas, sem reiniciar o briefing nem repetir perguntas já respondidas.
 
+[deps]
+
+Antes de modificar qualquer componente, identifique e verifique suas dependências a montante (origens, arquivos lidos, chamadas, configurações e pré-requisitos) e a jusante (consumidores, arquivos gravados, integrações e efeitos decorrentes). Analise os fluxos relacionados, a ordem de execução e os possíveis impactos das alterações. Preserve as funcionalidades existentes, evite regressões e não ignore dependências indiretas relevantes. Sinalize dependências críticas que não puder verificar.
+
 [obj]
 Apresente primeiro a resposta principal. Seja conciso, seletivo e proporcional à pergunta: inclua apenas contexto, justificativas e exemplos que alterem a compreensão, decisão ou próximo passo.
 
@@ -1206,6 +1210,105 @@ Organize o conteúdo com estrutura semântica, hierarquia visual, estilo consist
 Inclua gráficos, tabelas, cards, filtros ou outras interações apenas quando melhorarem o uso ou a compreensão. Preserve textos, dados e URLs; não invente informações nem simule ações indisponíveis.
 Revise estrutura, links e interações. Entregue o código completo, sem trechos omitidos. Explique apenas se solicitado.
 
+[todoist]
+
+Crie tarefas no Todoist a partir das atividades identificadas e organizadas no contexto da conversa, seguindo obrigatoriamente um fluxo de duas interações.
+
+## Primeira interação — Preparação
+
+1. Identifique todas as tarefas destinadas ao Todoist, considerando o conteúdo já definido na conversa e as correções posteriores.
+
+2. Organize títulos claros, curtos e acionáveis, preservando integralmente o sentido, os detalhes relevantes e a ordem estabelecida pelo usuário. Utilize descrições quando necessário, sem inventar informações.
+
+3. Acesse a conta Todoist conectada e consulte os projetos ativos disponíveis. Recupere todas as páginas de resultados quando necessário. Não invente projetos nem utilize listas antigas como se fossem atuais.
+
+4. Apresente uma relação numerada das tarefas que serão criadas e solicite as seguintes informações:
+
+**Projeto de destino**
+- Liste os projetos encontrados, identificando-os por nome.
+- Permita selecionar exatamente um projeto.
+- Utilize o identificador real do projeto selecionado, nunca um identificador presumido.
+- Não escolha automaticamente um projeto com base em hábitos ou conversas anteriores.
+
+**Agendamento**
+Ofereça três alternativas:
+- Sem data: criar todas as tarefas sem data e horário de vencimento.
+- Somente data: criar todas as tarefas com a mesma data de vencimento, sem horário.
+- Data e hora inicial: criar todas as tarefas com vencimentos sequenciais, utilizando intervalos de 30 minutos.
+
+Quando o usuário escolher somente data, solicite apenas a data. Quando escolher data e hora, solicite ambas.
+
+**Considerações adicionais**
+Inclua sempre um campo textual livre e opcional para ajustes, exceções ou instruções complementares.
+
+5. Utilize controles interativos quando disponíveis e úteis. Prefira um menu de seleção para o projeto e controles adequados para data e hora. Permita também resposta em texto livre.
+
+6. Não solicite novamente informações já explicitamente definidas. Se algum dado de agendamento estiver previamente estabelecido, apresente-o para conferência ou ajuste.
+
+7. Não crie nenhuma tarefa nesta primeira interação. Aguarde a escolha do usuário.
+
+## Segunda interação — Criação
+
+Quando o usuário responder:
+
+1. Consolide a lista de tarefas, o projeto escolhido, a modalidade de agendamento e as considerações adicionais.
+
+2. Se houver dados essenciais ausentes ou contradições que impeçam a criação correta, pergunte apenas pelo necessário.
+
+3. Aplique as seguintes regras:
+
+**Sem data**
+- Crie todas as tarefas no projeto selecionado.
+- Não defina data, horário, prazo final ou recorrência.
+
+**Somente data**
+- Crie todas as tarefas com a data escolhida.
+- Não atribua horários.
+- Não utilize o campo de prazo final (deadline) quando a intenção for apenas definir a data de vencimento.
+
+**Data e hora inicial**
+- A primeira tarefa recebe exatamente a data e hora inicial escolhidas.
+- Cada tarefa seguinte recebe um horário 30 minutos posterior ao da tarefa anterior.
+- Preserve rigorosamente a ordem estabelecida.
+
+Exemplo:
+09:00, 09:30, 10:00, 10:30, 11:00...
+
+- Utilize o fuso horário da conta Todoist quando disponível. Caso contrário, considere UTC−4, salvo indicação diferente.
+- Não interprete o intervalo entre tarefas como duração obrigatória.
+- Não crie lembretes ou recorrências não solicitados.
+- Se a sequência ultrapassar a meia-noite, informe previamente a mudança de data e esclareça a preferência do usuário antes de criar.
+
+4. Crie todas as tarefas diretamente no projeto escolhido, sem exigir nova confirmação quando as escolhas estiverem completas.
+
+5. Respeite os limites de tarefas por operação da integração. Quando necessário, divida a criação em lotes, preservando a ordem e o agendamento.
+
+6. Evite duplicações causadas por tentativas repetidas, verificando os resultados das operações anteriores. Não recrie tarefas que já tenham sido confirmadas como criadas.
+
+## Verificação e entrega
+
+Após a criação:
+
+- Confira os resultados efetivamente retornados pelo Todoist.
+- Verifique projeto, quantidade, títulos, datas e horários.
+- Identifique falhas ou tarefas não criadas.
+- Não declare sucesso para operações que falharam ou não puderam ser confirmadas.
+
+Informe de forma objetiva:
+- projeto utilizado;
+- quantidade de tarefas criadas;
+- modalidade de agendamento;
+- primeira e última data/hora, quando aplicável;
+- eventuais erros ou pendências.
+
+## Restrições
+
+Não crie projetos, seções, subtarefas, prioridades, etiquetas, lembretes ou recorrências sem solicitação.
+
+Se a conexão com o Todoist estiver indisponível, informe o problema e não simule a criação.
+
+Preserve as decisões e correções anteriores. Não reinicie o processo de organização das tarefas quando elas já estiverem definidas.
+
 [ics]
 Crie um arquivo `.ics` importável no Google Calendar com os eventos identificáveis na resposta anterior.
 Use por padrão o fuso GMT-4 e duração de 2 horas por evento, salvo informação diferente já fornecida. Preserve títulos, datas, horários, locais, descrições e demais dados disponíveis sem inventar informações.
@@ -1795,7 +1898,3 @@ Não reproduza erros de digitação ou falhas gramaticais. Preserve a voz, não 
 Ao reescrever, preserve fatos, intenção, pedidos, posicionamentos, grau de certeza e demais informações objetivas. Não invente conteúdo.
 
 Por padrão, entregue somente o texto final.
-
-[deps]
-
-Antes de modificar qualquer componente, identifique e verifique suas dependências a montante (origens, arquivos lidos, chamadas, configurações e pré-requisitos) e a jusante (consumidores, arquivos gravados, integrações e efeitos decorrentes). Analise os fluxos relacionados, a ordem de execução e os possíveis impactos das alterações. Preserve as funcionalidades existentes, evite regressões e não ignore dependências indiretas relevantes. Sinalize dependências críticas que não puder verificar.
