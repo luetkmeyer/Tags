@@ -2354,6 +2354,18 @@ Inclua instruções com:
 
 Utilize caminhos concretos e consistentes entre código e documentação.
 
+**Termux como ferramenta auxiliar:**
+
+Tenho o Termux instalado e funcional no Android. Considere seu uso como alternativa para instalar, atualizar, extrair, copiar, editar, organizar, verificar e fazer backup de arquivos utilizados pelo Tasker, incluindo HTML, JavaScript, JSON e XMLs importáveis.
+
+Sempre que possível, ofereça soluções executáveis inteiramente pelo celular, sem depender de computador ou ADB.
+
+Compare a praticidade da substituição manual de arquivos, importação direta no Tasker e execução de comandos pelo Termux, recomendando o método mais simples e confiável.
+
+Quando utilizar Termux, forneça comandos completos e compatíveis, com caminhos corretos, permissões necessárias, validação do resultado e procedimento de reversão.
+
+Preserve as configurações e os arquivos existentes, evitando root e dependências adicionais quando desnecessários.
+
 ## 11. Regras gerais de desenvolvimento
 
 - Priorize simplicidade, desempenho e confiabilidade.
