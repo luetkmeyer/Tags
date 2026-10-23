@@ -1975,6 +1975,8 @@ Considere, quando disponíveis e compatíveis:
 
 - "global("NomeVariavel")" — consultar variável global.
 - "setGlobal("NomeVariavel", valor)" — definir variável global.
+- "performTask(...)" — iniciar uma tarefa Tasker, passando argumentos quando necessário.
+- "readFile(...)" , "writeFile(...)" e "createDir(...)" — operações locais de arquivo, quando suportadas pela interface.
 - "setClip(texto)" — copiar texto para o clipboard.
 - "destroyScene(...)" — encerrar uma Scene, utilizando a assinatura compatível com a versão instalada.
 
@@ -2005,7 +2007,13 @@ Quando a comunicação exigir uma tarefa adicional no Tasker, explique e impleme
 
 Trate problemas de permissões, dados indisponíveis, chamadas malsucedidas e diferenças entre versões.
 
-Não dependa do clipboard de um navegador comum quando a API do Tasker for mais apropriada.
+Padrões já validados no meu ambiente, reutilizáveis conforme o contexto:
+- O HTML de uma Scene clássica pode acionar tarefas por "performTask(...)" e encerrá-la por "destroyScene(...)".
+- Para inserir texto no campo focado, uma tarefa pode usar "Keyboard → write(%par1)", com preparação adequada dos caracteres interpretados como comandos pelo Keyboard. Ao fechar uma Scene antes da escrita, um Wait de 500 ms já funcionou, mas deve ser ajustado se necessário.
+- Para enviar no WhatsApp Android, "Keyboard → Control+Enter" funcionou no meu aparelho. Use apenas quando eu solicitar envio automático; não presuma que funcione em todos os aplicativos ou dispositivos.
+- Em qualquer escrita automatizada, separe conteúdo textual de comandos de teclado, evite duplicidade e valide as particularidades de textos longos, Unicode e múltiplas linhas.
+
+Não dependa do clipboard de um navegador comum quando a API do Tasker for mais apropriada. Evite usá-lo quando desnecessário e respeite projetos que proíbam seu uso.
 
 4. Variáveis e armazenamento
 
@@ -2047,6 +2055,7 @@ Quando fizer sentido, separe:
 A organização deve acompanhar a complexidade real do projeto. Não crie tarefas separadas sem necessidade.
 
 Utilize "Perform Task" para reutilizar rotinas quando apropriado.
+Padronize tarefas auxiliares parametrizadas (por exemplo, recebendo texto em "%par1") para abertura, fechamento, leitura, gravação, inserção e envio, somente quando essas funções fizerem sentido no projeto.
 
 Evite duplicar processamento na Scene e nas tarefas.
 
@@ -2105,6 +2114,8 @@ Utilize HTML, CSS e JavaScript puro como padrão.
 Crie componentes adicionais apenas quando oferecerem benefício funcional.
 
 8. Compatibilidade e segurança
+
+Meu aparelho dispõe de root utilizável pelo Tasker, sujeito às autorizações necessárias. Considere-o uma capacidade disponível, não uma exigência: prefira alternativas sem root quando igualmente adequadas; ao usá-lo, verifique permissões, efeitos colaterais e reversibilidade.
 
 Considere as particularidades do Android e do Tasker.
 
@@ -2172,11 +2183,9 @@ Para o Tasker:
 - Explique como configurar a Scene.
 - Explique como abrir e encerrar a interface.
 
-Quando houver formato importável conhecido e validado, considere gerar arquivos ".tsk.xml" ou outros artefatos compatíveis.
-
-Não invente arquivos XML importáveis sem verificar a estrutura necessária.
-
-Quando não for possível produzir uma Scene importável confiável, forneça instruções objetivas para criá-la manualmente.
+Priorize gerar tarefas ".tsk.xml", Scenes ".scn.xml" e outros artefatos diretamente importáveis, quando sua estrutura puder ser confirmada, em vez de exigir criação manual no Tasker.
+Use como referência exportações reais, versões compatíveis e estruturas já validadas; revise identificadores, nomes, parâmetros e dependências. Não invente XML importável nem declare compatibilidade sem fundamento.
+Se a Scene ou outra peça não puder ser gerada com confiabilidade, entregue instruções manuais exatas apenas para ela.
 
 Etapa D — Validação
 
@@ -2186,6 +2195,7 @@ Antes da entrega, revise:
 - Comunicação entre Tasker e interface.
 - Nomes de variáveis.
 - Fluxo de execução.
+- Estrutura, referências e dependências dos XMLs importáveis.
 - Tratamento de erros.
 - Persistência de dados.
 - Fechamento da Scene.
@@ -2209,7 +2219,8 @@ NomeProjeto/
 ├── scripts/
 │   └── processamento.js
 ├── tasker/
-│   └── tarefa.tsk.xml
+│   ├── tarefa.tsk.xml
+│   └── interface.scn.xml (quando importável)
 └── LEIA-ME.md
 
 Essa estrutura é ilustrativa. Crie somente os arquivos necessários.
