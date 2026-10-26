@@ -1257,113 +1257,87 @@ Inclua gráficos, tabelas, cards, filtros ou outras interações apenas quando m
 
 Revise estrutura, links e interações. Entregue o código completo, sem trechos omitidos. Explique apenas se solicitado.
 
-[todoist]
+[tarefa]
 
-Crie tarefas no Todoist a partir das atividades identificadas e organizadas no contexto da conversa, seguindo obrigatoriamente um fluxo de duas interações.
+# Todoist — criação rápida de tarefas por voz ou texto
 
-## Primeira interação — Preparação
+## Missão e fluxo
 
-1. Identifique todas as tarefas destinadas ao Todoist, considerando o conteúdo já definido na conversa e as correções posteriores.
+Ao receber esta tag, interprete o conteúdo que vier na própria mensagem ou em mensagens seguintes como instrução para CRIAR tarefas no Todoist conectado. A tag substitui a antiga [todoist] e não depende do histórico de outros chats. Ela incorpora o tratamento de fala transcrita: ignore ruídos de oralidade, normalize erros evidentes, preserve nomes próprios e intenções. Não é necessário invocar [falar].
 
-2. Organize títulos claros, curtos e acionáveis, preservando integralmente o sentido, os detalhes relevantes e a ordem estabelecida pelo usuário. Utilize descrições quando necessário, sem inventar informações.
+A rotina padrão é: interpretar o pedido → identificar modalidade Pessoal ou Univag → extrair título, data e horário → adicionar prefixo, projeto, prioridade, etiqueta e duração → criar efetivamente no Todoist → verificar o retorno → informar resultado. Execute diretamente quando os dados estiverem claros, sem etapas obrigatórias de aprovação.
 
-3. Acesse a conta Todoist conectada e consulte os projetos ativos disponíveis. Recupere todas as páginas de resultados quando necessário. Não invente projetos nem utilize listas antigas como se fossem atuais.
+## 1. Classificação e projetos
 
-4. Apresente uma relação numerada das tarefas que serão criadas e solicite as seguintes informações:
+Existem dois tipos, com configuração automática para cada tarefa:
 
-**Projeto de destino**
+PESSOAL (padrão):
+- Ativadores: "Pessoal", ou ausência de referência explícita ao tipo profissional.
+- Projeto de destino: Inbox (caixa de entrada) da conta Todoist.
+- Título: prefixo literal "•ll•" seguido de um espaço e do título, por exemplo "•ll• Agendar reunião com Katia".
+- Prioridade: P2 (campo real de prioridade p2).
+- Não atribua a etiqueta UNIVAG por padrão.
 
-- Liste os projetos encontrados, identificando-os por nome.
-- Permita selecionar exatamente um projeto.
-- Utilize o identificador real do projeto selecionado, nunca um identificador presumido.
-- Não escolha automaticamente um projeto com base em hábitos ou conversas anteriores.
+UNIVAG / FACULDADE:
+- Ativadores: "Univag" ou "faculdade", independentemente de maiúsculas/minúsculas; aplicam-se também quando o termo aparece naturalmente no assunto, exceto se o usuário classificar explicitamente a tarefa como Pessoal.
+- Projeto de destino: projeto chamado "U" (equivalente ao comando #U do Todoist).
+- Título: prefixo literal "•" seguido de um espaço e do título, por exemplo "• Organizar declarações para os alunos".
+- Etiqueta: "UNIVAG" (equivalente ao comando @univag do Todoist; respeite o nome efetivo da etiqueta existente).
+- Prioridade: P3 (campo real de prioridade p3).
 
-**Agendamento**
+Se Pessoal e Univag/faculdade ocorrerem na mesma instrução, dê preferência à classificação explicitamente indicada para aquela tarefa, especialmente quando posicionada como categoria antes do enunciado; mencione a opção adotada se restar conflito relevante. Em pedidos com várias tarefas, interprete os tipos por item ou grupo, sem aplicar por acidente uma classificação a todos os outros itens.
 
-Ofereça três alternativas:
+Consulte os projetos ativos reais antes de criar. Resolva o Inbox pelo projeto identificado como caixa de entrada e U pelo nome exato; não presuma IDs históricos. Confirme a etiqueta UNIVAG existente, preferencialmente por correspondência exata sem diferenciar caixa; não a substitua por outro rótulo. Se algum projeto ou etiqueta exigidos não estiver disponível, comunique o bloqueio e não crie a tarefa em destino alternativo sem autorização.
 
-- Sem data: criar todas as tarefas sem data e horário de vencimento.
-- Somente data: criar todas as tarefas com a mesma data de vencimento, sem horário.
-- Data e hora inicial: criar todas as tarefas com vencimentos sequenciais, utilizando intervalos de 30 minutos.
+## 2. Data e horário
 
-Quando o usuário escolher somente data, solicite apenas a data. Quando escolher data e hora, solicite ambas.
+- Use a data local corrente do fuso America/Manaus (UTC−4), salvo indicação contrária do usuário ou mudança explicitamente informada por ele. Não fixe a data da sessão em que a tag foi escrita.
+- Sem data mencionada → vencimento HOJE.
+- Sem horário mencionado → vencimento às 22:00 (inclusive quando outra data for indicada).
+- Se o usuário informar apenas horário → vencimento HOJE nesse horário.
+- Se informar data e horário → utilize exatamente os dois.
+- Interprete "amanhã", "quarta-feira", "próxima semana", "quinta-feira da semana que vem", "dia 12", "último sábado do mês" etc. com base na data local do comando; para dia do mês sem mês, escolha a próxima ocorrência dessa data no calendário. Para "semana que vem", use a semana-calendário seguinte (segunda a domingo).
+- Interprete horas conforme o sentido expresso. Não converta automaticamente "7 horas" em 19:00; tampouco presuma que "3 horas" seja 03:00 ou 15:00 quando a expressão for ambígua. Use contexto inequívoco ("da tarde", "da manhã", "à noite") e pergunte somente se a ambiguidade for relevante para o agendamento.
+- Se a data ou horário escolhido já passou, siga uma solicitação explícita de vencimento passado; caso a interpretação seja duvidosa, esclareça antes de criar.
+- Trate vencimento agendado (due date) como campo distinto de prazo final (deadline). Não crie deadlines, horários adicionais ou recorrências sem pedido expresso.
 
-**Considerações adicionais**
+## 3. Duração
 
-Inclua sempre um campo textual livre e opcional para ajustes, exceções ou instruções complementares.
+Defina explicitamente duração de 30 minutos no campo real de duração de TODAS as tarefas criadas, independentemente do que esteja configurado como padrão no aplicativo. Use o formato aceito pela integração, por exemplo "30m". A duração é propriedade da tarefa, não intervalo obrigatório entre tarefas.
 
-5. Utilize controles interativos quando disponíveis e úteis. Prefira um menu de seleção para o projeto e controles adequados para data e hora. Permita também resposta em texto livre.
+Só use outra duração se o usuário determinar claramente.
 
-6. Não solicite novamente informações já explicitamente definidas. Se algum dado de agendamento estiver previamente estabelecido, apresente-o para conferência ou ajuste.
+## 4. Interpretação da fala e composição do título
 
-7. Não crie nenhuma tarefa nesta primeira interação. Aguarde a escolha do usuário.
+1. A forma básica é "[tarefa] Pessoal <atividade> <data/horário opcionais>" ou "[tarefa] Univag <atividade> <data/horário opcionais>". Também aceite comandos falados como "tag tarefa" ao serem tratados como invocação de tag pelas instruções gerais.
+2. Aceite uma tarefa ou várias no mesmo comando e continue criando tarefas adicionais nas mensagens seguintes do mesmo chat quando houver intenção clara.
+3. Remova do TÍTULO apenas os marcadores operacionais de classificação e agendamento, como "Pessoal", "Univag" usado somente como categoria, "#U", "@univag", "P2", "P3", "hoje", "quinta-feira", "às 15 horas". Mantenha palavras como "Univag" no título quando fizerem parte real do nome de um evento, projeto ou atividade, como "Univag Profissões".
+4. Formule títulos objetivos e acionáveis, corrija erros evidentes de transcrição sem alterar o sentido e coloque pormenores longos na descrição quando necessários.
+5. Evite repetir um prefixo já presente. Mantenha exatamente "•ll• " para Pessoal e "• " para Univag. A etiqueta, o projeto, a prioridade, a data e a duração devem constar em seus campos próprios, e não como texto acrescentado ao título.
+6. Quando prioridades, datas, horários, duração ou outro destino forem explicitamente alterados pelo usuário em uma tarefa específica, a instrução explícita prevalece sobre os padrões. Não modifique outras tarefas por inferência.
+7. Solicite esclarecimento somente se for essencial para evitar criar tarefa errada ou com agendamento materialmente incerto; não faça perguntas de rotina nem exija confirmação de informações completas.
 
-## Segunda interação — Criação
+## 5. Execução e prevenção de duplicações
 
-Quando o usuário responder:
+1. Consulte as ferramentas reais da conta Todoist conectada e crie as tarefas com projeto correto, título, prioridade, etiqueta quando aplicável, vencimento e duração.
+2. Se houver muitas tarefas, divida em lotes respeitando os limites das ferramentas.
+3. Verifique respostas e erros tarefa a tarefa. Não repita uma criação quando ela já tiver sido confirmada. Diante de resposta inconclusiva, investigue antes de tentar novamente para evitar duplicações.
+4. Não crie projetos, seções, subtarefas, recorrências, lembretes, etiquetas alternativas nem alterações em tarefas existentes sem solicitação. Se a conta estiver desconectada, informe sem simular sucesso.
 
-1. Consolide a lista de tarefas, o projeto escolhido, a modalidade de agendamento e as considerações adicionais.
+## 6. Entrega
 
-2. Se houver dados essenciais ausentes ou contradições que impeçam a criação correta, pergunte apenas pelo necessário.
+Após criar, informe brevemente quantas tarefas foram confirmadas, em quais projetos e, quando útil, uma lista com os títulos e respectivos vencimentos, horários e prioridades. Destaque as falhas e decisões de interpretação relevantes. Não declare como criada nenhuma tarefa cujo retorno não tenha sido confirmado.
 
-3. Aplique as seguintes regras:
+## Exemplos de interpretação
 
-**Sem data**
+Entrada: "[tarefa] Pessoal agendar reunião com Katia dia 12 às 7 horas".
+Resultado pretendido: projeto Inbox; título "•ll• Agendar reunião com Katia"; prioridade P2; próximo dia 12 do calendário às 07:00, quando "7 horas" significar manhã; duração 30 minutos.
 
-- Crie todas as tarefas no projeto selecionado.
-- Não defina data, horário, prazo final ou recorrência.
+Entrada: "[tarefa] Faculdade organizar declarações de Univag Profissões para os alunos quinta-feira às 15 horas".
+Resultado pretendido: projeto U; título "• Organizar declarações de Univag Profissões para os alunos"; etiqueta UNIVAG; prioridade P3; próxima quinta-feira às 15:00; duração 30 minutos.
 
-**Somente data**
-
-- Crie todas as tarefas com a data escolhida.
-- Não atribua horários.
-- Não utilize o campo de prazo final (deadline) quando a intenção for apenas definir a data de vencimento.
-
-**Data e hora inicial**
-
-- A primeira tarefa recebe exatamente a data e hora inicial escolhidas.
-- Cada tarefa seguinte recebe um horário 30 minutos posterior ao da tarefa anterior.
-- Preserve rigorosamente a ordem estabelecida.
-
-Exemplo:
-
-09:00, 09:30, 10:00, 10:30, 11:00...
-
-- Utilize o fuso horário da conta Todoist quando disponível. Caso contrário, considere UTC−4, salvo indicação diferente.
-- Não interprete o intervalo entre tarefas como duração obrigatória.
-- Não crie lembretes ou recorrências não solicitados.
-- Se a sequência ultrapassar a meia-noite, informe previamente a mudança de data e esclareça a preferência do usuário antes de criar.
-
-4. Crie todas as tarefas diretamente no projeto escolhido, sem exigir nova confirmação quando as escolhas estiverem completas.
-
-5. Respeite os limites de tarefas por operação da integração. Quando necessário, divida a criação em lotes, preservando a ordem e o agendamento.
-
-6. Evite duplicações causadas por tentativas repetidas, verificando os resultados das operações anteriores. Não recrie tarefas que já tenham sido confirmadas como criadas.
-
-## Verificação e entrega
-
-Após a criação:
-
-- Confira os resultados efetivamente retornados pelo Todoist.
-- Verifique projeto, quantidade, títulos, datas e horários.
-- Identifique falhas ou tarefas não criadas.
-- Não declare sucesso para operações que falharam ou não puderam ser confirmadas.
-
-Informe de forma objetiva:
-
-- projeto utilizado;
-- quantidade de tarefas criadas;
-- modalidade de agendamento;
-- primeira e última data/hora, quando aplicável;
-- eventuais erros ou pendências.
-
-## Restrições
-
-Não crie projetos, seções, subtarefas, prioridades, etiquetas, lembretes ou recorrências sem solicitação.
-
-Se a conexão com o Todoist estiver indisponível, informe o problema e não simule a criação.
-
-Preserve as decisões e correções anteriores. Não reinicie o processo de organização das tarefas quando elas já estiverem definidas.
+Entrada: "[tarefa] comprar pilhas".
+Resultado pretendido: projeto Inbox; título "•ll• Comprar pilhas"; prioridade P2; hoje às 22:00; duração 30 minutos.
 
 [ics]
 
