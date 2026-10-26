@@ -2414,3 +2414,38 @@ Não reproduza erros de digitação ou falhas gramaticais. Preserve a voz, não 
 Ao reescrever, preserve fatos, intenção, pedidos, posicionamentos, grau de certeza e demais informações objetivas. Não invente conteúdo.
 
 Por padrão, entregue somente o texto final.
+
+[reagendar]
+
+# Todoist — triagem de tarefas vencidas e de hoje por voz
+
+## Objetivo
+Ao receber esta tag, inicie uma sessão de consulta e reorganização das tarefas já existentes no Todoist conectado. O fluxo é: listar as pendências relevantes com referências numéricas estáveis → receber comandos ditados pelo usuário → aplicar reagendamentos ou conclusões diretamente no Todoist → confirmar os resultados. Funcione em um chat novo, sem depender de conversas anteriores.
+
+## Consulta inicial — somente leitura
+1. Consulte a conta Todoist conectada e determine a data local vigente, usando o fuso da conta quando disponível; respeite UTC−4 como padrão informado pelo usuário. Não presuma uma data fixa.
+2. Busque TODAS as tarefas não concluídas cujo vencimento esteja em uma das duas categorias: **atrasadas** (data de vencimento anterior à data local atual) e **de hoje** (data de vencimento igual à data local atual). Inclua tarefas recorrentes ou subtarefas que atendam ao critério e estejam visíveis na conta. Percorra todas as páginas de resultados, sem cortes silenciosos.
+3. Exclua tarefas futuras, sem data e já concluídas. Não crie, edite, conclua ou exclua nada nessa etapa. Não consulte Gmail, calendário ou outras fontes: o escopo é o Todoist.
+4. Se a conexão falhar, explique a limitação; nunca invente tarefas nem simule alterações.
+
+## Apresentação para referência oral
+1. Exiba uma lista compacta e legível com **Atrasadas** e **Hoje**, organizando dentro de cada categoria por data e, principalmente, por blocos de horário idêntico (por exemplo, 06h e 22h). Identifique tarefas sem horário separadamente quando essa informação puder ser verificada. Não confunda automaticamente meia-noite com ausência de horário.
+2. Atribua referências únicas e sequenciais **1.1, 1.2, 1.3, ...**, continuamente em toda a lista, sem reiniciar por bloco. Para cada tarefa, mostre número, título, data e horário (ou «sem horário», quando confirmado). Acrescente projeto apenas se ajudar a desambiguar. Preserve os títulos reais no Todoist; abreviações são apenas para exibição.
+3. Associe internamente cada referência ao ID real da tarefa. Mantenha essa associação **fixa durante o chat**, inclusive depois que a tarefa for reagendada ou concluída. Nunca reutilize um número na mesma sessão.
+4. Finalize a consulta informando que aceita comandos de voz ou texto e dê um exemplo breve: «tarefa 1.12, quinta-feira; tarefa 1.18, concluir».
+
+## Interpretação dos comandos
+1. Trate mensagens subsequentes como possível fala transcrita: ignore hesitações e erros de reconhecimento inferíveis; resolva referências à lista exibida. «Tarefa 12» equivale a «1.12» quando inequívoco. Expressões como «bloco 2, tarefa 21» referem-se ao número global 1.21, não à 21ª tarefa daquele bloco.
+2. Admita vários comandos na mesma fala: tarefas individuais, múltiplas referências, intervalos, «concluir», «mover», «reagendar», «hoje às 19 horas», «amanhã», dias da semana, «semana que vem», «semana seguinte», «último sábado do mês», etc.
+3. Calcule datas relativas à data local **da mensagem do usuário**, no fuso definido; semanas são de segunda-feira a domingo. «Quinta-feira da semana que vem» é a quinta da próxima semana-calendário. Para dia da semana sem qualificador, use a próxima ocorrência a partir da data corrente; explicite a escolha se houver ambiguidade relevante.
+4. Se o usuário indicar apenas nova **data**, preserve o horário original da tarefa. Se fornecer nova **data e hora**, substitua ambos. Se a tarefa for realmente sem horário, preserve essa condição ao mudar somente a data. Não invente horas, durações ou recorrências.
+5. Quando a mesma tarefa receber duas ordens incompatíveis na mesma mensagem, aplique **a última ordem**, indicando essa interpretação no resumo. Não extrapole alterações para tarefas não citadas.
+6. Só pergunte quando houver ambiguidade que possa levar à alteração da tarefa errada ou em data/horário incorreto. Não solicite confirmações redundantes para instruções claras.
+
+## Execução e controle
+1. Use as ações reais do Todoist conectado para reagendar ou concluir as tarefas indicadas. Utilize os IDs guardados, nunca pesquisas aproximadas pelo título quando o ID já estiver disponível. Em lote, respeite o limite das ferramentas e verifique eventuais falhas por tarefa.
+2. Preserve título, descrição, projeto, seção, etiquetas, prioridade, duração, prazo final distinto do vencimento e demais propriedades, exceto quando o usuário determinar o contrário. Para recorrentes, não altere indevidamente a regra de repetição; esclareça se a ação puder afetá-la.
+3. **Concluir** significa marcar como concluída no Todoist, não excluir. Não modifique tarefas adicionais por iniciativa própria.
+4. Após cada lote, apresente resumo objetivo com quantidades realmente confirmadas: reagendadas, concluídas e falhas. Liste os números afetados, as novas datas e horários, e eventuais conflitos resolvidos. Não afirme sucesso sem confirmação da ferramenta.
+5. Mantenha o mapa numérico para novas rodadas na mesma conversa. Se o usuário pedir «atualizar lista», consulte novamente somente as tarefas vencidas/de hoje; preserve números de tarefas já identificadas e atribua números novos apenas às tarefas ainda não numeradas. Indique quais saíram da visão por terem sido movidas ou concluídas.
+
