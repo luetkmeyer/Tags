@@ -1827,111 +1827,34 @@ Ao receber esta tag, inicie uma sessão de consulta e reorganização das tarefa
 4. Após cada lote, apresente resumo objetivo com quantidades realmente confirmadas: reagendadas, concluídas e falhas. Liste os números afetados, as novas datas e horários, e eventuais conflitos resolvidos. Não afirme sucesso sem confirmação da ferramenta.
 5. Mantenha o mapa numérico para novas rodadas na mesma conversa. Se o usuário pedir «atualizar lista», consulte novamente somente as tarefas vencidas/de hoje; preserve números de tarefas já identificadas e atribua números novos apenas às tarefas ainda não numeradas. Indique quais saíram da visão por terem sido movidas ou concluídas.
 
-[prod]
+[produto]
 
-Pesquise o produto, modelo ou categoria visando encontrar opções de compra compatíveis, confiáveis e competitivas.
+Ajude a identificar, comparar ou pesquisar produtos e serviços conforme o pedido atual e o contexto disponível.
 
-Primeiro identifique, quando possível, o produto exato, variante, especificações e requisitos de compatibilidade. Diferencie claramente correspondências exatas de similares ou alternativas.
+**Contexto e etapa**
+- Identifique o que devo fazer agora: esclarecer, listar, calcular, comparar ou pesquisar ofertas. Se eu disser para não pesquisar ainda, aguarde uma nova solicitação.
+- Para o mesmo produto, considere decisões e correções mais recentes. Separe requisitos obrigatórios, preferências, alternativas aceitas e pontos desconhecidos. Não transfira automaticamente critérios de outro produto ou chat.
+- Esclareça uma ambiguidade quando ela puder mudar materialmente a pesquisa. Se faltar dado essencial, faça pergunta objetiva; caso contrário, prossiga e sinalize a limitação.
+- Se o pedido for apenas calcular ou comparar valores que forneci, use esses dados diretamente, salvo se eu pedir pesquisa externa.
 
-Adapte as fontes ao tipo de produto. Pesquise, conforme relevante:
+**Escopo e fontes**
+- Se eu pedir uma loja específica, restrinja a busca a ela. Se eu apenas priorizar lojas, comece por elas e considere outras fontes pertinentes; se eu pedir comparação ampla, amplie a busca.
+- Sem outro recorte, use como referência inicial Mercado Livre, AliExpress, Shopee, Amazon, Zoom/Buscapé e internet geral. Adapte a ordem à categoria e inclua, quando relevantes, fabricante, loja oficial, distribuidores, lojas especializadas e outros comparadores.
+- Para itens técnicos, antigos ou difíceis de encontrar, amplie conforme necessário para peças, assistência autorizada, distribuidores e fontes especializadas.
 
-1. Fabricante, loja oficial e revendedores autorizados.
+**Verificação**
+- Identifique modelo, variante e características que determinem compatibilidade. Diferencie produto exato, alternativa parcial e compatibilidade ainda não confirmada.
+- Na tabela principal, inclua somente links diretos utilizáveis para a página específica do produto ou anúncio. Não substitua o link por página de busca, categoria ou homepage. Referências sem link direto confirmado podem ser mencionadas separadamente, claramente identificadas.
+- Verifique a página específica quando tecnicamente possível. Distingua, para cada dado relevante, o que foi confirmado no anúncio, o que veio de busca ou página indexada e o que não foi confirmado. Não atribua preço ou condição de uma listagem a um anúncio sem evidência.
+- Compare, conforme o caso: preço, quantidade, variante, vendedor, estoque, condição, garantia, frete, prazo, impostos e custo total. Informe condições como Pix, cupom, cadastro ou elegibilidade e a data da consulta quando relevante.
+- Para compra local ou serviço, confirme separadamente disponibilidade para o local, data, quantidade e modalidade solicitados. Uma promoção geral não comprova estoque local.
+- Se faltar frete, imposto, preço de upgrade ou outro componente, não afirme qual tem o menor custo total. Compare apenas o que estiver disponível e diga o que falta.
+- Sinalize dados contraditórios, versões diferentes, anúncios imprecisos e riscos de importação. Não invente preço, link, prazo, estoque, compatibilidade ou qualquer condição.
 
-2. Lojas especializadas na categoria. Exemplos:
-    - informática e hardware: KaBuM!, Pichau, TerabyteShop;
-    - componentes eletrônicos: Mouser, DigiKey, RS, FilipeFlop e equivalentes;
-    - ferramentas e construção: Loja do Mecânico, Ferramentas Kennedy, Leroy Merlin, Obramax e equivalentes;
-    - automotivo: lojas especializadas em autopeças e distribuidores compatíveis com o veículo ou código da peça;
-    - eletrodomésticos e eletrônicos: Fast Shop, Magazine Luiza, Casas Bahia e varejistas especializados;
-    - demais categorias: identifique lojas especializadas relevantes antes de limitar a pesquisa aos grandes marketplaces.
-
-3. Marketplaces e varejo geral:
-    - Mercado Livre;
-    - Amazon;
-    - AliExpress;
-    - Shopee;
-    - outros relevantes para a categoria.
-
-4. Comparadores e mecanismos de descoberta de preço:
-    - Google Shopping;
-    - Buscapé;
-    - Zoom;
-    - JáCotei ou equivalentes;
-    - Promobit, Pelando e comunidades de ofertas quando úteis para histórico, promoções ou percepção de preço.
-
-Não siga uma ordem rígida quando outra fonte for claramente mais adequada ao produto. Descubra e inclua outras lojas especializadas ou mecanismos de comparação relevantes para a categoria.
-
-## Links e verificação
-
-Cada oferta apresentada deve ter, obrigatoriamente, o link direto para a página específica do produto ou anúncio encontrado.
-
-Não use como substituto:
-
-- página de pesquisa;
-- resultados de busca da loja;
-- página de categoria;
-- homepage;
-- link genérico do marketplace;
-- URL contendo apenas a consulta pesquisada;
-- página de comparação que não leve ao anúncio específico.
-
-Quando tecnicamente possível, abra ou verifique a página específica antes de incluir o resultado e confirme que o link corresponde ao produto, variante e oferta descritos.
-
-Prefira a URL direta ou canônica do anúncio, evitando links de rastreamento, redirecionamentos desnecessários ou URLs temporárias quando houver alternativa melhor.
-
-Se encontrar preço ou referência de uma oferta, mas não conseguir obter ou confirmar o link direto do produto:
-
-- não apresente essa oferta como resultado confirmado;
-- não invente nem substitua o link por uma busca genérica;
-- se ela for relevante para contextualização, coloque-a separadamente como “link direto não confirmado”.
-
-Todo resultado da tabela principal deve possuir um link direto utilizável para conferência pelo usuário.
-
-Compare, quando disponíveis:
-
-- preço e custo total estimado;
-- frete e prazo;
-- estoque;
-- vendedor e reputação;
-- condição: novo, usado, open-box ou recondicionado;
-- versão, variante e compatibilidade;
-- garantia, devolução e procedência;
-- origem nacional ou importada;
-- impostos, riscos e prazo adicional de importação.
-
-Para produtos técnicos, verifique identificadores e características que possam determinar compatibilidade, como modelo, código da peça, revisão, dimensões, conectores, tensão, geração, região ou equivalentes.
-
-Se o produto for muito específico, antigo, técnico ou difícil de encontrar, amplie a busca para distribuidores, assistência autorizada, lojas de peças, fóruns/comunidades especializadas e vendedores internacionais confiáveis.
-
-Priorize resultados verificáveis e anúncios do produto exato. Não misture similares com correspondências exatas. Sinalize anúncios imprecisos, preços anormalmente baixos, acessórios incompletos, versões diferentes ou qualquer incompatibilidade relevante.
-
-Se a pesquisa comum não for suficiente para identificar opções confiáveis ou se o produto exigir investigação técnica, ampla ou multifuente, sinalize que a Pesquisa aprofundada pode trazer ganho material antes de concluir com resultados frágeis.
-
-Evite duplicatas e não invente preço, estoque, frete, prazo, garantia, compatibilidade ou URL.
-
-Quando houver base suficiente, destaque:
-
-- menor custo total;
-- melhor custo-benefício;
-- opção de compra mais segura;
-- melhor opção em loja especializada, quando relevante.
-
-Formato padrão:
-
-1. resumo curto;
-2. tabela com:
-    - loja;
-    - produto/versão;
-    - preço;
-    - frete/prazo;
-    - condição;
-    - observações;
-    - link direto do produto;
-3. características ou compatibilidade relevantes;
-4. alertas;
-5. conclusão prática e opções de refinamento.
-
-Na tabela, não deixe o campo de link vazio. Se não houver link direto verificável, o resultado não deve integrar a tabela principal.
+**Resposta**
+- Comece pela conclusão prática e seus limites. Apresente uma tabela quando facilitar a comparação, seguida apenas das características e alertas relevantes.
+- Destaque menor custo, melhor custo-benefício ou compra mais segura somente quando houver base suficiente. Se nenhuma opção cumprir os requisitos, diga isso e apresente alternativas parciais separadamente.
+- Se uma investigação mais ampla ou aprofundada puder melhorar materialmente um resultado frágil, sinalize isso antes de concluir. Sugira refinamentos apenas quando forem úteis.
 
 [F7]
 
