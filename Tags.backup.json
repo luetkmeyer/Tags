@@ -1,7 +1,7 @@
 {
   "app": "instruction-tag-builder",
   "version": 2,
-  "exportedAt": "2026-10-30T00:20:17Z",
+  "exportedAt": "2026-10-30T00:29:19.373Z",
   "data": {
     "blocks": [
       {
@@ -76,7 +76,7 @@
         "type": "tag",
         "category": "fluxo",
         "labels": [],
-        "content": "[obj]\n\nApresente primeiro a resposta principal. Seja conciso, seletivo e proporcional à pergunta: inclua apenas contexto, justificativas e exemplos que alterem a compreensão, decisão ou próximo passo.\n\nUse frases diretas e completas, sem preâmbulos, repetições, metacomentários ou contexto dispensável. Prefira clareza à compressão; não sacrifique legibilidade com fragmentos, abreviações ou estrutura excessiva.\n\nEm perguntas simples, responda diretamente. Use listas, tabelas ou seções apenas quando melhorarem a clareza. Preserve o conteúdo solicitado, informações críticas, incertezas, ressalvas e riscos relevantes."
+        "content": "[o]\n\nApresente primeiro a resposta principal. Seja conciso, seletivo e proporcional à pergunta: inclua apenas contexto, justificativas e exemplos que alterem a compreensão, decisão ou próximo passo.\n\nUse frases diretas e completas, sem preâmbulos, repetições, metacomentários ou contexto dispensável. Prefira clareza à compressão; não sacrifique legibilidade com fragmentos, abreviações ou estrutura excessiva.\n\nEm perguntas simples, responda diretamente. Use listas, tabelas ou seções apenas quando melhorarem a clareza. Preserve o conteúdo solicitado, informações críticas, incertezas, ressalvas e riscos relevantes."
       },
       {
         "id": "ok",
@@ -411,7 +411,6 @@
       "Univag"
     ],
     "selected": [
-      "geral",
       "tags",
       "falar",
       "plan",
