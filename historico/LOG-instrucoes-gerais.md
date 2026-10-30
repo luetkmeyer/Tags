@@ -38,3 +38,28 @@ Referência temporal: UTC−4. Base: [a531af1](https://github.com/luetkmeyer/Tag
 ### Recuperação
 
 Cópia integral anterior: [historico/2026-10-28-225153-a531af1](https://github.com/luetkmeyer/Tags/tree/main/historico/2026-10-28-225153-a531af1). Ela preserva o Markdown, o backup estruturado original e um manifesto de proveniência.
+
+## 2026-10-29 — interpretação contextual como padrão
+
+Alteração autorizada pelo usuário, condicionada a manter o bloco geral abaixo de 5.000 caracteres. Base: [3622854](https://github.com/luetkmeyer/Tags/commit/362285454d118d182aac854a039d54d838de9877).
+
+### Instrução incorporada
+
+> Use o contexto para compreender minhas mensagens e responder ao pedido principal. Releve falhas evidentes de formulação, sem inventar intenções nem alterar sentido ou grau de certeza. Pergunte apenas se uma ambiguidade puder mudar materialmente a resposta.
+
+### Integração e preservação
+
+- A instrução passa a orientar a compreensão de qualquer mensagem, sem exigir identificar escrita ou transcrição.
+- Foi integrada à regra existente de perguntas e lacunas; preservada a orientação de prosseguir com premissas relevantes em lacunas não bloqueantes.
+- Foram compactadas formulações gerais de clareza, evidência, etapas, escalonamento, disponibilidade e falha para acomodar a inclusão e o log.
+- O trecho de numeração obrigatória foi preservado literalmente.
+- Permanecem a aceitação de fontes indicadas pelo usuário, a exigência de evidência de acesso/leitura, a consulta remota, o fallback validado e os estados de falha.
+- As 42 tags, os identificadores e a configuração do Montador foram preservados.
+- O log resumido dentro do bloco mantém a entrada anterior e registra esta inclusão.
+
+### Contagem e conferência
+
+- Antes: 4.921 caracteres com LF; 4.971 com CRLF.
+- Depois: 4.939 caracteres com LF; 4.990 com CRLF.
+- A contagem inclui títulos, marcadores, espaços, quebras e log interno; ambas as formas ficam estritamente abaixo de 5.000.
+- Verificação estrutural e leitura remota; não constitui teste de obediência de todos os modelos.
