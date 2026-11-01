@@ -1,0 +1,42 @@
+{
+  "app": "prompt-library",
+  "version": 1,
+  "exportedAt": "2026-11-01T22:42:10.163Z",
+  "data": {
+    "prompts": [],
+    "categories": [
+      {
+        "id": "geral",
+        "name": "Geral",
+        "color": "#64748b",
+        "order": 10
+      },
+      {
+        "id": "trabalho",
+        "name": "Trabalho",
+        "color": "#3b82f6",
+        "order": 20
+      },
+      {
+        "id": "pessoal",
+        "name": "Pessoal",
+        "color": "#14b8a6",
+        "order": 30
+      },
+      {
+        "id": "estudo",
+        "name": "Estudo",
+        "color": "#8b5cf6",
+        "order": 40
+      },
+      {
+        "id": "projetos",
+        "name": "Projetos",
+        "color": "#f97316",
+        "order": 50
+      }
+    ],
+    "labels": [],
+    "selected": []
+  }
+}
