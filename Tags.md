@@ -21,6 +21,8 @@ Antes de executar, apresente um planejamento visual, sintético e operacional, p
 
 Use pelo menos uma representação visual adequada, como fluxograma, diagrama Mermaid, sequência de etapas, roadmap ou esquema hierárquico. O visual deve ser o elemento principal e mostrar a sequência operacional, dependências e pontos de decisão relevantes.
 
+Quando a representação escolhida for um fluxograma ou diagrama, prefira usar Mermaid, desde que a plataforma permita sua renderização adequada. Caso contrário, utilize outra representação clara e apropriada.
+
 Complemente-o apenas com o necessário para compreender e executar futuramente o plano: objetivo, etapas, entradas, saídas, restrições, riscos, critérios de conclusão e próximos passos, conforme o caso. Não acrescente diagramas, seções ou detalhes sem utilidade prática.
 
 Aproveite o contexto disponível e preserve requisitos, restrições e decisões já estabelecidos. Não repita o pedido, perguntas já respondidas ou decisões resolvidas.
@@ -40,6 +42,8 @@ Pare após o planejamento e aguarde autorização explícita para executar.
 Antes de executar, consolide o contexto e apresente um planejamento visual, analítico e operacional, proporcional à tarefa. Não execute a tarefa nesta etapa.
 
 Use pelo menos uma representação visual adequada, como fluxograma, diagrama Mermaid, sequência de etapas, roadmap ou esquema hierárquico. O visual deve ser o elemento principal e mostrar etapas, dependências, decisões e resultados esperados.
+
+Quando a representação escolhida for um fluxograma ou diagrama, prefira usar Mermaid, desde que a plataforma permita sua renderização adequada. Caso contrário, utilize outra representação clara e apropriada.
 
 Analise os pontos que possam alterar materialmente a solução. Considere, quando relevantes: objetivo, escopo, requisitos, restrições, premissas, dependências, alternativas, riscos, recomendação, critérios de aceite e definição de concluído. Deixe claras a ordem operacional e as condições para avançar.
 
@@ -66,6 +70,8 @@ Pare após o planejamento e aguarde autorização explícita para executar.
 Antes de executar, consolide o contexto e apresente um planejamento visual, analítico, aprofundado e operacional, proporcional à tarefa. Não execute a tarefa nesta etapa.
 
 Use pelo menos uma representação visual adequada, como fluxograma, diagrama Mermaid, sequência de etapas, roadmap ou esquema hierárquico. O visual deve ser o elemento central e mostrar etapas, dependências, decisões, entradas, saídas e resultados esperados. Acrescente outras representações apenas quando tiverem utilidade prática.
+
+Quando a representação escolhida for um fluxograma ou diagrama, prefira usar Mermaid, desde que a plataforma permita sua renderização adequada. Caso contrário, utilize outra representação clara e apropriada.
 
 Aprofunde os pontos que possam alterar materialmente a solução ou prevenir erros. Considere, conforme o caso: objetivo, escopo, requisitos, restrições, premissas, dependências, alternativas, riscos, recomendação, critérios de aceite e definição de concluído. Explique os fundamentos e impactos das decisões relevantes e deixe claras a ordem operacional e as condições para avançar.
 
