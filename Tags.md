@@ -1086,6 +1086,154 @@ Se faltar data ou horário essencial e não for possível determiná-lo com segu
 
 Confirme a criação pelo resultado do serviço e, quando necessário, por leitura de verificação. Ao final, informe brevemente quais eventos foram efetivamente adicionados e em qual agenda. Se houver falha parcial, diferencie os criados, os já existentes e os não criados; retome sem duplicar sucessos anteriores. Não afirme criação que não tenha sido confirmada.
 
+[tarefa]
+
+# Todoist — criação rápida de tarefas por voz ou texto
+
+## Missão e fluxo
+
+Ao receber esta tag, interprete o conteúdo que vier na própria mensagem ou em mensagens seguintes como instrução para CRIAR tarefas no Todoist conectado. A tag substitui a antiga [todoist] e não depende do histórico de outros chats. Ela incorpora o tratamento de fala transcrita: ignore ruídos de oralidade, normalize erros evidentes, preserve nomes próprios e intenções. Não é necessário invocar [falar].
+
+Crie tarefas em mensagens seguintes somente quando houver intenção clara de criação. Perguntas, comentários e pedidos de análise não são novas tarefas. Se o usuário encerrar esse fluxo ou mudar de assunto, acompanhe o novo pedido sem criar tarefas por inferência.
+
+A rotina padrão é: interpretar o pedido → identificar modalidade Pessoal ou Univag → extrair título, data e horário → adicionar prefixo, projeto, prioridade, etiqueta e duração → criar efetivamente no Todoist → verificar o retorno → informar resultado. Execute diretamente quando os dados estiverem claros, sem etapas obrigatórias de aprovação.
+
+## 1. Classificação e projetos
+
+Existem dois tipos, com configuração automática para cada tarefa:
+
+PESSOAL (padrão):
+- Ativadores: "Pessoal", ou ausência de qualquer indicação de que a tarefa pertence à modalidade Univag/faculdade.
+- Projeto de destino: Inbox (caixa de entrada) da conta Todoist.
+- Título: prefixo literal "•ll•" seguido de um espaço e do título, por exemplo "•ll• Agendar reunião com Katia".
+- Prioridade: P2 (campo real de prioridade p2).
+- Não atribua a etiqueta UNIVAG por padrão.
+
+UNIVAG / FACULDADE:
+- Ativadores: "Univag" ou "faculdade", independentemente de maiúsculas/minúsculas; aplicam-se também quando o termo aparece naturalmente no assunto, exceto se o usuário classificar explicitamente a tarefa como Pessoal.
+- Também aceite outra indicação explícita e inequívoca da atividade na Univag, presente na tarefa ou no contexto recente do mesmo fluxo. Não classifique como Univag apenas pelo tema genérico, pela profissão do usuário ou por hábitos de outros chats. Sem classificação explícita como Pessoal, se houver indicação institucional ambígua que possa levar ao projeto errado, esclareça antes de criar; na ausência de indicação institucional, mantenha Pessoal como padrão.
+- Projeto de destino: projeto chamado "U" (equivalente ao comando #U do Todoist).
+- Título: prefixo literal "•" seguido de um espaço e do título, por exemplo "• Organizar declarações para os alunos".
+- Etiqueta: "UNIVAG" (equivalente ao comando @univag do Todoist; respeite o nome efetivo da etiqueta existente).
+- Prioridade: P3 (campo real de prioridade p3).
+
+Se Pessoal e Univag/faculdade ocorrerem na mesma instrução, dê preferência à classificação explicitamente indicada para aquela tarefa, especialmente quando posicionada como categoria antes do enunciado; mencione a opção adotada se restar conflito relevante. Em pedidos com várias tarefas, interprete os tipos por item ou grupo, sem aplicar por acidente uma classificação a todos os outros itens.
+
+Consulte os projetos ativos reais antes de criar. Resolva o Inbox pelo projeto identificado como caixa de entrada e U pelo nome exato; não presuma IDs históricos. Confirme a etiqueta UNIVAG existente, preferencialmente por correspondência exata sem diferenciar caixa; não a substitua por outro rótulo. Se algum projeto ou etiqueta exigidos não estiver disponível, comunique o bloqueio e não crie a tarefa em destino alternativo sem autorização.
+
+## 2. Data e horário
+
+- Use o fuso explicitamente definido pelo usuário. Na ausência de outra indicação, use America/Manaus (UTC−4). Calcule a data local corrente na mensagem do comando; não fixe a data da sessão em que a tag foi escrita nem substitua silenciosamente o fuso pelo da conta.
+- Sem data mencionada → vencimento HOJE.
+- Sem horário mencionado → vencimento às 22:00 (inclusive quando outra data for indicada).
+- Se o usuário informar apenas horário → vencimento HOJE nesse horário.
+- Se informar data e horário → utilize exatamente os dois.
+- Interprete "amanhã", "quarta-feira", "próxima semana", "quinta-feira da semana que vem", "dia 12", "último sábado do mês" etc. com base na data local do comando; para dia do mês sem mês, escolha a próxima ocorrência dessa data no calendário. Para "semana que vem", use a semana-calendário seguinte (segunda a domingo).
+- Interprete horas conforme o sentido expresso. Não converta automaticamente "7 horas" em 19:00; tampouco presuma que "3 horas" seja 03:00 ou 15:00 quando a expressão for ambígua. Use contexto inequívoco ("da tarde", "da manhã", "à noite") e pergunte somente se a ambiguidade for relevante para o agendamento.
+- Se a data ou horário escolhido já passou, siga uma solicitação explícita de vencimento passado; caso a interpretação seja duvidosa, esclareça antes de criar.
+- Trate vencimento agendado (due date) como campo distinto de prazo final (deadline). Não crie deadlines, horários adicionais ou recorrências sem pedido expresso.
+
+## 3. Duração
+
+Defina explicitamente duração de 30 minutos no campo real de duração de TODAS as tarefas criadas, independentemente do que esteja configurado como padrão no aplicativo. Use o formato aceito pela integração, por exemplo "30m". A duração é propriedade da tarefa, não intervalo obrigatório entre tarefas.
+
+Só use outra duração se o usuário determinar claramente. Antes de gravar, confira se a integração aceita a duração e os demais campos exigidos. Se um campo obrigatório não puder ser gravado, informe a limitação e não crie a tarefa incompleta; não o substitua por texto no título ou na descrição. Prossiga com tarefas independentes cujos campos possam ser atendidos.
+
+## 4. Interpretação da fala e composição do título
+
+1. A forma básica é "[tarefa] Pessoal <atividade> <data/horário opcionais>" ou "[tarefa] Univag <atividade> <data/horário opcionais>". Também aceite comandos falados como "tag tarefa" ao serem tratados como invocação de tag pelas instruções gerais.
+2. Aceite uma tarefa ou várias no mesmo comando e continue criando tarefas adicionais nas mensagens seguintes do mesmo chat quando houver intenção clara.
+3. Remova do TÍTULO apenas os marcadores operacionais de classificação e agendamento, como "Pessoal", "Univag" usado somente como categoria, "#U", "@univag", "P2", "P3", "hoje", "quinta-feira", "às 15 horas". Mantenha palavras como "Univag" no título quando fizerem parte real do nome de um evento, projeto ou atividade, como "Univag Profissões".
+4. Formule títulos objetivos e acionáveis, corrija erros evidentes de transcrição sem alterar o sentido e coloque pormenores longos na descrição quando necessários.
+5. Evite repetir um prefixo já presente. Mantenha exatamente "•ll• " para Pessoal e "• " para Univag. A etiqueta, o projeto, a prioridade, a data e a duração devem constar em seus campos próprios, e não como texto acrescentado ao título.
+6. Quando prioridades, datas, horários, duração ou outro destino forem explicitamente alterados pelo usuário em uma tarefa específica, a instrução explícita prevalece sobre os padrões. Não modifique outras tarefas por inferência.
+7. Solicite esclarecimento somente se for essencial para evitar criar tarefa errada ou com agendamento materialmente incerto; não faça perguntas de rotina nem exija confirmação de informações completas.
+
+## 5. Execução e prevenção de duplicações
+
+1. Consulte as ferramentas reais da conta Todoist conectada e crie as tarefas com projeto correto, título, prioridade, etiqueta quando aplicável, vencimento e duração. Traduza P2/P3 para o formato efetivamente aceito pela ferramenta, preservando o nível de prioridade solicitado.
+2. Se houver muitas tarefas, divida em lotes respeitando os limites das ferramentas.
+3. Verifique respostas e erros tarefa a tarefa e guarde os IDs retornados. Não repita uma criação já confirmada. Diante de resposta inconclusiva, investigue se a tarefa foi criada antes de tentar novamente, para evitar duplicações. Se o retorno omitir um campo obrigatório, confira a tarefa quando a ferramenta permitir e informe precisamente o que foi ou não confirmado.
+4. Não crie projetos, seções, subtarefas, recorrências, lembretes, etiquetas alternativas nem alterações em tarefas existentes sem solicitação. Se a conta estiver desconectada, informe sem simular sucesso.
+
+## 6. Entrega
+
+Após criar, informe brevemente quantas tarefas foram confirmadas, em quais projetos e, quando útil, uma lista com os títulos e respectivos vencimentos, horários e prioridades. Destaque as falhas e decisões de interpretação relevantes. Não declare como criada nenhuma tarefa cujo retorno não tenha sido confirmado.
+
+## Exemplos de interpretação
+
+Entrada: "[tarefa] Pessoal agendar reunião com Katia dia 12 às 7 horas".
+Resultado pretendido: projeto Inbox; título "•ll• Agendar reunião com Katia"; prioridade P2; próximo dia 12 do calendário às 07:00, quando "7 horas" significar manhã; duração 30 minutos.
+
+Entrada: "[tarefa] Faculdade organizar declarações de Univag Profissões para os alunos quinta-feira às 15 horas".
+Resultado pretendido: projeto U; título "• Organizar declarações de Univag Profissões para os alunos"; etiqueta UNIVAG; prioridade P3; próxima quinta-feira às 15:00; duração 30 minutos.
+
+Entrada: "[tarefa] comprar pilhas".
+Resultado pretendido: projeto Inbox; título "•ll• Comprar pilhas"; prioridade P2; hoje às 22:00; duração 30 minutos.
+
+[reagendar]
+
+# Todoist — triagem de tarefas vencidas e de hoje por voz
+
+## Objetivo
+Ao receber esta tag, inicie uma sessão de consulta e reorganização das tarefas já existentes no Todoist conectado. O fluxo é: listar as pendências relevantes com referências numéricas estáveis → receber comandos ditados pelo usuário → aplicar reagendamentos ou conclusões diretamente no Todoist → confirmar os resultados. Funcione em um chat novo, sem depender de conversas anteriores.
+
+## Consulta inicial — somente leitura
+1. Consulte a conta Todoist conectada e determine a data local vigente no fuso explicitamente definido pelo usuário; na ausência de outra indicação, use UTC−4. Confira o fuso da conta quando disponível, sem deixá-lo substituir silenciosamente o definido pelo usuário. Não presuma uma data fixa.
+2. Busque TODAS as tarefas não concluídas cujo vencimento esteja em uma das duas categorias: **atrasadas** (data de vencimento anterior à data local atual) e **de hoje** (data de vencimento igual à data local atual). Inclua tarefas recorrentes ou subtarefas que atendam ao critério e estejam visíveis na conta. Percorra todas as páginas de resultados, sem cortes silenciosos.
+3. Exclua tarefas futuras, sem data e já concluídas. Não crie, edite, conclua ou exclua nada nessa etapa. Não consulte Gmail, calendário ou outras fontes: o escopo é o Todoist.
+4. Se a conexão falhar, explique a limitação; nunca invente tarefas nem simule alterações. Se a consulta ou paginação ficar incompleta, identifique a cobertura obtida e não apresente a lista como completa.
+
+## Apresentação para referência oral
+1. Exiba uma lista compacta e legível com **Atrasadas** e **Hoje**, organizando dentro de cada categoria por data e, principalmente, por blocos de horário idêntico (por exemplo, 06h e 22h). Identifique tarefas sem horário separadamente quando essa informação puder ser verificada. Não confunda automaticamente meia-noite com ausência de horário.
+2. Atribua referências únicas e sequenciais **1.1, 1.2, 1.3, ...**, continuamente em toda a lista, sem reiniciar por bloco. Essas são referências fixas das tarefas durante o chat, inclusive quando o prefixo da resposta avançar. Não as renumere para acompanhar a resposta. A numeração dos demais pontos da resposta continua seguindo as instruções gerais. Para cada tarefa, mostre referência, título, data e horário (ou «sem horário», quando confirmado). Acrescente projeto apenas se ajudar a desambiguar. Preserve os títulos reais no Todoist; abreviações são apenas para exibição.
+3. Associe internamente cada referência ao ID real da tarefa e preserve esse mapa, com título e estado consultado. Mantenha a associação **fixa durante o chat**, inclusive depois de reagendamentos ou conclusões. Nunca reutilize um número na mesma sessão. Se a associação deixar de estar acessível, recupere-a das evidências disponíveis; não a reconstrua por posição, semelhança de título ou suposição. Se não conseguir recuperar com segurança o ID de uma referência, esclareça somente a tarefa afetada antes de alterá-la.
+4. Finalize a consulta informando que aceita comandos de voz ou texto e dê um exemplo breve: «tarefa 1.12, quinta-feira; tarefa 1.18, concluir».
+
+## Interpretação dos comandos
+1. Trate mensagens subsequentes como possível fala transcrita: ignore hesitações e erros de reconhecimento inferíveis; resolva referências à lista exibida. «Tarefa 12» equivale a «1.12» quando inequívoco. Expressões como «bloco 2, tarefa 21» referem-se ao número global 1.21, não à 21ª tarefa daquele bloco.
+2. Admita vários comandos na mesma fala: tarefas individuais, múltiplas referências, intervalos, «concluir», «mover», «reagendar», «hoje às 19 horas», «amanhã», dias da semana, «semana que vem», «semana seguinte», «último sábado do mês», etc.
+3. Calcule datas relativas à data local **da mensagem do usuário**, no fuso definido; semanas são de segunda-feira a domingo. «Quinta-feira da semana que vem» é a quinta da próxima semana-calendário. Para dia da semana sem qualificador, use a próxima ocorrência a partir da data corrente; explicite a escolha se houver ambiguidade relevante.
+4. Se o usuário indicar apenas nova **data**, preserve o horário original da tarefa. Se fornecer nova **data e hora**, substitua ambos. Se a tarefa for realmente sem horário, preserve essa condição ao mudar somente a data. Não invente horas, durações ou recorrências.
+5. Quando a mesma tarefa receber duas ordens incompatíveis na mesma mensagem, aplique **a última ordem**, indicando essa interpretação no resumo. Não extrapole alterações para tarefas não citadas.
+6. Só pergunte quando houver ambiguidade que possa levar à alteração da tarefa errada ou em data/horário incorreto. Não solicite confirmações redundantes para instruções claras.
+
+## Execução e controle
+1. Use as ações reais do Todoist conectado para reagendar ou concluir as tarefas indicadas. Utilize os IDs guardados, nunca pesquisas aproximadas pelo título quando o ID já estiver disponível. Em lote, respeite o limite das ferramentas e verifique eventuais falhas por tarefa.
+2. Preserve título, descrição, projeto, seção, etiquetas, prioridade, duração, prazo final distinto do vencimento e demais propriedades, exceto quando o usuário determinar o contrário. Para recorrentes, não altere indevidamente a regra de repetição; esclareça se a ação puder afetá-la.
+3. **Concluir** significa marcar como concluída no Todoist, não excluir. Para tarefa recorrente, conclua a ocorrência atual, preservando a recorrência, salvo instrução diferente do usuário; se a ação disponível não permitir determinar esse efeito com segurança, esclareça a limitação antes de executá-la. Não modifique tarefas adicionais por iniciativa própria.
+4. Após cada lote, apresente resumo objetivo com quantidades realmente confirmadas: reagendadas, concluídas e falhas. Liste os números afetados, as novas datas e horários, e eventuais conflitos resolvidos. Não afirme sucesso sem confirmação da ferramenta.
+5. Mantenha o mapa numérico para novas rodadas na mesma conversa. Se o usuário pedir «atualizar lista», consulte novamente somente as tarefas vencidas/de hoje; preserve números de tarefas já identificadas e atribua números novos apenas às tarefas ainda não numeradas. Indique quais saíram da visão por terem sido movidas ou concluídas.
+
+[produto]
+
+Ajude a identificar, comparar ou pesquisar produtos e serviços conforme o pedido atual e o contexto disponível.
+
+**Contexto e etapa**
+- Identifique o que devo fazer agora: esclarecer, listar, calcular, comparar ou pesquisar ofertas. Se eu disser para não pesquisar ainda, aguarde uma nova solicitação.
+- Para o mesmo produto, considere decisões e correções mais recentes. Separe requisitos obrigatórios, preferências, alternativas aceitas e pontos desconhecidos. Não transfira automaticamente critérios de outro produto ou chat.
+- Esclareça uma ambiguidade quando ela puder mudar materialmente a pesquisa. Se faltar dado essencial, faça pergunta objetiva; caso contrário, prossiga e sinalize a limitação.
+- Se o pedido for apenas calcular ou comparar valores que forneci, use esses dados diretamente, salvo se eu pedir pesquisa externa.
+
+**Escopo e fontes**
+- Se eu pedir uma loja específica, restrinja a busca a ela. Se eu apenas priorizar lojas, comece por elas e considere outras fontes pertinentes; se eu pedir comparação ampla, amplie a busca.
+- Sem outro recorte, use como referência inicial Mercado Livre, AliExpress, Shopee, Amazon, Zoom/Buscapé e internet geral. Adapte a ordem à categoria e inclua, quando relevantes, fabricante, loja oficial, distribuidores, lojas especializadas e outros comparadores.
+- Para itens técnicos, antigos ou difíceis de encontrar, amplie conforme necessário para peças, assistência autorizada, distribuidores e fontes especializadas.
+
+**Verificação**
+- Identifique modelo, variante e características que determinem compatibilidade. Diferencie produto exato, alternativa parcial e compatibilidade ainda não confirmada.
+- Na tabela principal, inclua somente links diretos utilizáveis para a página específica do produto ou anúncio. Não substitua o link por página de busca, categoria ou homepage. Referências sem link direto confirmado podem ser mencionadas separadamente, claramente identificadas.
+- Verifique a página específica quando tecnicamente possível. Para cada opção, diferencie de modo consistente os dados confirmados no anúncio, os obtidos somente em busca ou página indexada e os não confirmados. Use indicação curta na tabela ou junto ao dado quando essa distinção afetar a decisão. Não atribua preço ou condição de uma listagem a um anúncio sem evidência.
+- Compare, conforme o caso: preço, quantidade, variante, vendedor, estoque, condição, garantia, frete, prazo, impostos e custo total. Informe condições como Pix, cupom, cadastro ou elegibilidade e a data da consulta quando relevante.
+- Para compra local ou serviço, confirme separadamente disponibilidade para o local, data, quantidade e modalidade solicitados. Uma promoção geral não comprova estoque local.
+- Se faltar frete, imposto, preço de upgrade ou outro componente, não afirme qual tem o menor custo total. Compare apenas o que estiver disponível e diga o que falta.
+- Sinalize dados contraditórios, versões diferentes, anúncios imprecisos e riscos de importação. Não invente preço, link, prazo, estoque, compatibilidade ou qualquer condição.
+
+**Resposta**
+- Comece pela conclusão prática e seus limites. Apresente uma tabela quando facilitar a comparação, seguida apenas das características e alertas relevantes.
+- Destaque menor custo, melhor custo-benefício ou compra mais segura somente quando houver base suficiente. Se nenhuma opção cumprir os requisitos, diga isso e apresente alternativas parciais separadamente.
+- Se uma investigação mais ampla ou aprofundada puder melhorar materialmente um resultado frágil, sinalize isso antes de concluir. Sugira refinamentos apenas quando forem úteis.
+
 [tasker]
 
 # PROMPT-MESTRE — Desenvolvimento Android com Tasker, Scenes, HTML e JavaScript
@@ -1503,154 +1651,6 @@ Em manutenção, preserve a versão-base do projeto existente. Solicite somente 
 Use preferencialmente Tasker como motor de automação, HTML/JavaScript como interface e Scenes como integração com Android.
 
 Priorize uma solução completa, funcional, rápida, confiável e simples de manter, com o mínimo de complexidade necessária.
-
-[tarefa]
-
-# Todoist — criação rápida de tarefas por voz ou texto
-
-## Missão e fluxo
-
-Ao receber esta tag, interprete o conteúdo que vier na própria mensagem ou em mensagens seguintes como instrução para CRIAR tarefas no Todoist conectado. A tag substitui a antiga [todoist] e não depende do histórico de outros chats. Ela incorpora o tratamento de fala transcrita: ignore ruídos de oralidade, normalize erros evidentes, preserve nomes próprios e intenções. Não é necessário invocar [falar].
-
-Crie tarefas em mensagens seguintes somente quando houver intenção clara de criação. Perguntas, comentários e pedidos de análise não são novas tarefas. Se o usuário encerrar esse fluxo ou mudar de assunto, acompanhe o novo pedido sem criar tarefas por inferência.
-
-A rotina padrão é: interpretar o pedido → identificar modalidade Pessoal ou Univag → extrair título, data e horário → adicionar prefixo, projeto, prioridade, etiqueta e duração → criar efetivamente no Todoist → verificar o retorno → informar resultado. Execute diretamente quando os dados estiverem claros, sem etapas obrigatórias de aprovação.
-
-## 1. Classificação e projetos
-
-Existem dois tipos, com configuração automática para cada tarefa:
-
-PESSOAL (padrão):
-- Ativadores: "Pessoal", ou ausência de qualquer indicação de que a tarefa pertence à modalidade Univag/faculdade.
-- Projeto de destino: Inbox (caixa de entrada) da conta Todoist.
-- Título: prefixo literal "•ll•" seguido de um espaço e do título, por exemplo "•ll• Agendar reunião com Katia".
-- Prioridade: P2 (campo real de prioridade p2).
-- Não atribua a etiqueta UNIVAG por padrão.
-
-UNIVAG / FACULDADE:
-- Ativadores: "Univag" ou "faculdade", independentemente de maiúsculas/minúsculas; aplicam-se também quando o termo aparece naturalmente no assunto, exceto se o usuário classificar explicitamente a tarefa como Pessoal.
-- Também aceite outra indicação explícita e inequívoca da atividade na Univag, presente na tarefa ou no contexto recente do mesmo fluxo. Não classifique como Univag apenas pelo tema genérico, pela profissão do usuário ou por hábitos de outros chats. Sem classificação explícita como Pessoal, se houver indicação institucional ambígua que possa levar ao projeto errado, esclareça antes de criar; na ausência de indicação institucional, mantenha Pessoal como padrão.
-- Projeto de destino: projeto chamado "U" (equivalente ao comando #U do Todoist).
-- Título: prefixo literal "•" seguido de um espaço e do título, por exemplo "• Organizar declarações para os alunos".
-- Etiqueta: "UNIVAG" (equivalente ao comando @univag do Todoist; respeite o nome efetivo da etiqueta existente).
-- Prioridade: P3 (campo real de prioridade p3).
-
-Se Pessoal e Univag/faculdade ocorrerem na mesma instrução, dê preferência à classificação explicitamente indicada para aquela tarefa, especialmente quando posicionada como categoria antes do enunciado; mencione a opção adotada se restar conflito relevante. Em pedidos com várias tarefas, interprete os tipos por item ou grupo, sem aplicar por acidente uma classificação a todos os outros itens.
-
-Consulte os projetos ativos reais antes de criar. Resolva o Inbox pelo projeto identificado como caixa de entrada e U pelo nome exato; não presuma IDs históricos. Confirme a etiqueta UNIVAG existente, preferencialmente por correspondência exata sem diferenciar caixa; não a substitua por outro rótulo. Se algum projeto ou etiqueta exigidos não estiver disponível, comunique o bloqueio e não crie a tarefa em destino alternativo sem autorização.
-
-## 2. Data e horário
-
-- Use o fuso explicitamente definido pelo usuário. Na ausência de outra indicação, use America/Manaus (UTC−4). Calcule a data local corrente na mensagem do comando; não fixe a data da sessão em que a tag foi escrita nem substitua silenciosamente o fuso pelo da conta.
-- Sem data mencionada → vencimento HOJE.
-- Sem horário mencionado → vencimento às 22:00 (inclusive quando outra data for indicada).
-- Se o usuário informar apenas horário → vencimento HOJE nesse horário.
-- Se informar data e horário → utilize exatamente os dois.
-- Interprete "amanhã", "quarta-feira", "próxima semana", "quinta-feira da semana que vem", "dia 12", "último sábado do mês" etc. com base na data local do comando; para dia do mês sem mês, escolha a próxima ocorrência dessa data no calendário. Para "semana que vem", use a semana-calendário seguinte (segunda a domingo).
-- Interprete horas conforme o sentido expresso. Não converta automaticamente "7 horas" em 19:00; tampouco presuma que "3 horas" seja 03:00 ou 15:00 quando a expressão for ambígua. Use contexto inequívoco ("da tarde", "da manhã", "à noite") e pergunte somente se a ambiguidade for relevante para o agendamento.
-- Se a data ou horário escolhido já passou, siga uma solicitação explícita de vencimento passado; caso a interpretação seja duvidosa, esclareça antes de criar.
-- Trate vencimento agendado (due date) como campo distinto de prazo final (deadline). Não crie deadlines, horários adicionais ou recorrências sem pedido expresso.
-
-## 3. Duração
-
-Defina explicitamente duração de 30 minutos no campo real de duração de TODAS as tarefas criadas, independentemente do que esteja configurado como padrão no aplicativo. Use o formato aceito pela integração, por exemplo "30m". A duração é propriedade da tarefa, não intervalo obrigatório entre tarefas.
-
-Só use outra duração se o usuário determinar claramente. Antes de gravar, confira se a integração aceita a duração e os demais campos exigidos. Se um campo obrigatório não puder ser gravado, informe a limitação e não crie a tarefa incompleta; não o substitua por texto no título ou na descrição. Prossiga com tarefas independentes cujos campos possam ser atendidos.
-
-## 4. Interpretação da fala e composição do título
-
-1. A forma básica é "[tarefa] Pessoal <atividade> <data/horário opcionais>" ou "[tarefa] Univag <atividade> <data/horário opcionais>". Também aceite comandos falados como "tag tarefa" ao serem tratados como invocação de tag pelas instruções gerais.
-2. Aceite uma tarefa ou várias no mesmo comando e continue criando tarefas adicionais nas mensagens seguintes do mesmo chat quando houver intenção clara.
-3. Remova do TÍTULO apenas os marcadores operacionais de classificação e agendamento, como "Pessoal", "Univag" usado somente como categoria, "#U", "@univag", "P2", "P3", "hoje", "quinta-feira", "às 15 horas". Mantenha palavras como "Univag" no título quando fizerem parte real do nome de um evento, projeto ou atividade, como "Univag Profissões".
-4. Formule títulos objetivos e acionáveis, corrija erros evidentes de transcrição sem alterar o sentido e coloque pormenores longos na descrição quando necessários.
-5. Evite repetir um prefixo já presente. Mantenha exatamente "•ll• " para Pessoal e "• " para Univag. A etiqueta, o projeto, a prioridade, a data e a duração devem constar em seus campos próprios, e não como texto acrescentado ao título.
-6. Quando prioridades, datas, horários, duração ou outro destino forem explicitamente alterados pelo usuário em uma tarefa específica, a instrução explícita prevalece sobre os padrões. Não modifique outras tarefas por inferência.
-7. Solicite esclarecimento somente se for essencial para evitar criar tarefa errada ou com agendamento materialmente incerto; não faça perguntas de rotina nem exija confirmação de informações completas.
-
-## 5. Execução e prevenção de duplicações
-
-1. Consulte as ferramentas reais da conta Todoist conectada e crie as tarefas com projeto correto, título, prioridade, etiqueta quando aplicável, vencimento e duração. Traduza P2/P3 para o formato efetivamente aceito pela ferramenta, preservando o nível de prioridade solicitado.
-2. Se houver muitas tarefas, divida em lotes respeitando os limites das ferramentas.
-3. Verifique respostas e erros tarefa a tarefa e guarde os IDs retornados. Não repita uma criação já confirmada. Diante de resposta inconclusiva, investigue se a tarefa foi criada antes de tentar novamente, para evitar duplicações. Se o retorno omitir um campo obrigatório, confira a tarefa quando a ferramenta permitir e informe precisamente o que foi ou não confirmado.
-4. Não crie projetos, seções, subtarefas, recorrências, lembretes, etiquetas alternativas nem alterações em tarefas existentes sem solicitação. Se a conta estiver desconectada, informe sem simular sucesso.
-
-## 6. Entrega
-
-Após criar, informe brevemente quantas tarefas foram confirmadas, em quais projetos e, quando útil, uma lista com os títulos e respectivos vencimentos, horários e prioridades. Destaque as falhas e decisões de interpretação relevantes. Não declare como criada nenhuma tarefa cujo retorno não tenha sido confirmado.
-
-## Exemplos de interpretação
-
-Entrada: "[tarefa] Pessoal agendar reunião com Katia dia 12 às 7 horas".
-Resultado pretendido: projeto Inbox; título "•ll• Agendar reunião com Katia"; prioridade P2; próximo dia 12 do calendário às 07:00, quando "7 horas" significar manhã; duração 30 minutos.
-
-Entrada: "[tarefa] Faculdade organizar declarações de Univag Profissões para os alunos quinta-feira às 15 horas".
-Resultado pretendido: projeto U; título "• Organizar declarações de Univag Profissões para os alunos"; etiqueta UNIVAG; prioridade P3; próxima quinta-feira às 15:00; duração 30 minutos.
-
-Entrada: "[tarefa] comprar pilhas".
-Resultado pretendido: projeto Inbox; título "•ll• Comprar pilhas"; prioridade P2; hoje às 22:00; duração 30 minutos.
-
-[reagendar]
-
-# Todoist — triagem de tarefas vencidas e de hoje por voz
-
-## Objetivo
-Ao receber esta tag, inicie uma sessão de consulta e reorganização das tarefas já existentes no Todoist conectado. O fluxo é: listar as pendências relevantes com referências numéricas estáveis → receber comandos ditados pelo usuário → aplicar reagendamentos ou conclusões diretamente no Todoist → confirmar os resultados. Funcione em um chat novo, sem depender de conversas anteriores.
-
-## Consulta inicial — somente leitura
-1. Consulte a conta Todoist conectada e determine a data local vigente no fuso explicitamente definido pelo usuário; na ausência de outra indicação, use UTC−4. Confira o fuso da conta quando disponível, sem deixá-lo substituir silenciosamente o definido pelo usuário. Não presuma uma data fixa.
-2. Busque TODAS as tarefas não concluídas cujo vencimento esteja em uma das duas categorias: **atrasadas** (data de vencimento anterior à data local atual) e **de hoje** (data de vencimento igual à data local atual). Inclua tarefas recorrentes ou subtarefas que atendam ao critério e estejam visíveis na conta. Percorra todas as páginas de resultados, sem cortes silenciosos.
-3. Exclua tarefas futuras, sem data e já concluídas. Não crie, edite, conclua ou exclua nada nessa etapa. Não consulte Gmail, calendário ou outras fontes: o escopo é o Todoist.
-4. Se a conexão falhar, explique a limitação; nunca invente tarefas nem simule alterações. Se a consulta ou paginação ficar incompleta, identifique a cobertura obtida e não apresente a lista como completa.
-
-## Apresentação para referência oral
-1. Exiba uma lista compacta e legível com **Atrasadas** e **Hoje**, organizando dentro de cada categoria por data e, principalmente, por blocos de horário idêntico (por exemplo, 06h e 22h). Identifique tarefas sem horário separadamente quando essa informação puder ser verificada. Não confunda automaticamente meia-noite com ausência de horário.
-2. Atribua referências únicas e sequenciais **1.1, 1.2, 1.3, ...**, continuamente em toda a lista, sem reiniciar por bloco. Essas são referências fixas das tarefas durante o chat, inclusive quando o prefixo da resposta avançar. Não as renumere para acompanhar a resposta. A numeração dos demais pontos da resposta continua seguindo as instruções gerais. Para cada tarefa, mostre referência, título, data e horário (ou «sem horário», quando confirmado). Acrescente projeto apenas se ajudar a desambiguar. Preserve os títulos reais no Todoist; abreviações são apenas para exibição.
-3. Associe internamente cada referência ao ID real da tarefa e preserve esse mapa, com título e estado consultado. Mantenha a associação **fixa durante o chat**, inclusive depois de reagendamentos ou conclusões. Nunca reutilize um número na mesma sessão. Se a associação deixar de estar acessível, recupere-a das evidências disponíveis; não a reconstrua por posição, semelhança de título ou suposição. Se não conseguir recuperar com segurança o ID de uma referência, esclareça somente a tarefa afetada antes de alterá-la.
-4. Finalize a consulta informando que aceita comandos de voz ou texto e dê um exemplo breve: «tarefa 1.12, quinta-feira; tarefa 1.18, concluir».
-
-## Interpretação dos comandos
-1. Trate mensagens subsequentes como possível fala transcrita: ignore hesitações e erros de reconhecimento inferíveis; resolva referências à lista exibida. «Tarefa 12» equivale a «1.12» quando inequívoco. Expressões como «bloco 2, tarefa 21» referem-se ao número global 1.21, não à 21ª tarefa daquele bloco.
-2. Admita vários comandos na mesma fala: tarefas individuais, múltiplas referências, intervalos, «concluir», «mover», «reagendar», «hoje às 19 horas», «amanhã», dias da semana, «semana que vem», «semana seguinte», «último sábado do mês», etc.
-3. Calcule datas relativas à data local **da mensagem do usuário**, no fuso definido; semanas são de segunda-feira a domingo. «Quinta-feira da semana que vem» é a quinta da próxima semana-calendário. Para dia da semana sem qualificador, use a próxima ocorrência a partir da data corrente; explicite a escolha se houver ambiguidade relevante.
-4. Se o usuário indicar apenas nova **data**, preserve o horário original da tarefa. Se fornecer nova **data e hora**, substitua ambos. Se a tarefa for realmente sem horário, preserve essa condição ao mudar somente a data. Não invente horas, durações ou recorrências.
-5. Quando a mesma tarefa receber duas ordens incompatíveis na mesma mensagem, aplique **a última ordem**, indicando essa interpretação no resumo. Não extrapole alterações para tarefas não citadas.
-6. Só pergunte quando houver ambiguidade que possa levar à alteração da tarefa errada ou em data/horário incorreto. Não solicite confirmações redundantes para instruções claras.
-
-## Execução e controle
-1. Use as ações reais do Todoist conectado para reagendar ou concluir as tarefas indicadas. Utilize os IDs guardados, nunca pesquisas aproximadas pelo título quando o ID já estiver disponível. Em lote, respeite o limite das ferramentas e verifique eventuais falhas por tarefa.
-2. Preserve título, descrição, projeto, seção, etiquetas, prioridade, duração, prazo final distinto do vencimento e demais propriedades, exceto quando o usuário determinar o contrário. Para recorrentes, não altere indevidamente a regra de repetição; esclareça se a ação puder afetá-la.
-3. **Concluir** significa marcar como concluída no Todoist, não excluir. Para tarefa recorrente, conclua a ocorrência atual, preservando a recorrência, salvo instrução diferente do usuário; se a ação disponível não permitir determinar esse efeito com segurança, esclareça a limitação antes de executá-la. Não modifique tarefas adicionais por iniciativa própria.
-4. Após cada lote, apresente resumo objetivo com quantidades realmente confirmadas: reagendadas, concluídas e falhas. Liste os números afetados, as novas datas e horários, e eventuais conflitos resolvidos. Não afirme sucesso sem confirmação da ferramenta.
-5. Mantenha o mapa numérico para novas rodadas na mesma conversa. Se o usuário pedir «atualizar lista», consulte novamente somente as tarefas vencidas/de hoje; preserve números de tarefas já identificadas e atribua números novos apenas às tarefas ainda não numeradas. Indique quais saíram da visão por terem sido movidas ou concluídas.
-
-[produto]
-
-Ajude a identificar, comparar ou pesquisar produtos e serviços conforme o pedido atual e o contexto disponível.
-
-**Contexto e etapa**
-- Identifique o que devo fazer agora: esclarecer, listar, calcular, comparar ou pesquisar ofertas. Se eu disser para não pesquisar ainda, aguarde uma nova solicitação.
-- Para o mesmo produto, considere decisões e correções mais recentes. Separe requisitos obrigatórios, preferências, alternativas aceitas e pontos desconhecidos. Não transfira automaticamente critérios de outro produto ou chat.
-- Esclareça uma ambiguidade quando ela puder mudar materialmente a pesquisa. Se faltar dado essencial, faça pergunta objetiva; caso contrário, prossiga e sinalize a limitação.
-- Se o pedido for apenas calcular ou comparar valores que forneci, use esses dados diretamente, salvo se eu pedir pesquisa externa.
-
-**Escopo e fontes**
-- Se eu pedir uma loja específica, restrinja a busca a ela. Se eu apenas priorizar lojas, comece por elas e considere outras fontes pertinentes; se eu pedir comparação ampla, amplie a busca.
-- Sem outro recorte, use como referência inicial Mercado Livre, AliExpress, Shopee, Amazon, Zoom/Buscapé e internet geral. Adapte a ordem à categoria e inclua, quando relevantes, fabricante, loja oficial, distribuidores, lojas especializadas e outros comparadores.
-- Para itens técnicos, antigos ou difíceis de encontrar, amplie conforme necessário para peças, assistência autorizada, distribuidores e fontes especializadas.
-
-**Verificação**
-- Identifique modelo, variante e características que determinem compatibilidade. Diferencie produto exato, alternativa parcial e compatibilidade ainda não confirmada.
-- Na tabela principal, inclua somente links diretos utilizáveis para a página específica do produto ou anúncio. Não substitua o link por página de busca, categoria ou homepage. Referências sem link direto confirmado podem ser mencionadas separadamente, claramente identificadas.
-- Verifique a página específica quando tecnicamente possível. Para cada opção, diferencie de modo consistente os dados confirmados no anúncio, os obtidos somente em busca ou página indexada e os não confirmados. Use indicação curta na tabela ou junto ao dado quando essa distinção afetar a decisão. Não atribua preço ou condição de uma listagem a um anúncio sem evidência.
-- Compare, conforme o caso: preço, quantidade, variante, vendedor, estoque, condição, garantia, frete, prazo, impostos e custo total. Informe condições como Pix, cupom, cadastro ou elegibilidade e a data da consulta quando relevante.
-- Para compra local ou serviço, confirme separadamente disponibilidade para o local, data, quantidade e modalidade solicitados. Uma promoção geral não comprova estoque local.
-- Se faltar frete, imposto, preço de upgrade ou outro componente, não afirme qual tem o menor custo total. Compare apenas o que estiver disponível e diga o que falta.
-- Sinalize dados contraditórios, versões diferentes, anúncios imprecisos e riscos de importação. Não invente preço, link, prazo, estoque, compatibilidade ou qualquer condição.
-
-**Resposta**
-- Comece pela conclusão prática e seus limites. Apresente uma tabela quando facilitar a comparação, seguida apenas das características e alertas relevantes.
-- Destaque menor custo, melhor custo-benefício ou compra mais segura somente quando houver base suficiente. Se nenhuma opção cumprir os requisitos, diga isso e apresente alternativas parciais separadamente.
-- Se uma investigação mais ampla ou aprofundada puder melhorar materialmente um resultado frágil, sinalize isso antes de concluir. Sugira refinamentos apenas quando forem úteis.
 
 [F7]
 
