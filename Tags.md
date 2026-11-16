@@ -685,6 +685,41 @@ Se o limite de resposta impedir a entrega integral em uma única mensagem:
 
 Agora analise o chat de origem e produza exclusivamente o prompt de transferência conforme estas instruções.
 
+[consolidar]
+
+# CONSOLIDAÇÃO DO CONTEXTO — MESMO CHAT
+
+Produza um registro operacional atualizado desta conversa para orientar sua continuidade no mesmo chat. Trabalhe com o histórico e as fontes efetivamente acessíveis. O registro é para esta conversa, não um prompt de transferência.
+
+## Escopo e fontes
+
+- Considere o objetivo, as frentes de trabalho, os requisitos, as restrições, as preferências, as decisões, os dados, os arquivos, as versões, os testes, as falhas e as pendências relevantes à continuidade. Respeite o recorte pedido; se houver várias frentes relevantes, separe seus estados.
+- Diferencie informações obtidas diretamente do histórico ou de arquivos acessíveis, informações vindas de resumos e conteúdo indisponível. Não presuma leitura integral, reconstrua lacunas nem invente fatos, decisões, resultados ou testes.
+- Consulte as fontes disponíveis quando necessário para esclarecer o registro. Solicite arquivo ou informação somente se for indispensável e não puder ser recuperado. Não exponha senhas, tokens ou outros segredos.
+
+## Consolidação
+
+- Registre o estado vigente e preserve o que é necessário para continuar, inclusive tentativas malsucedidas, regressões e decisões substituídas quando explicarem riscos ou evitarem repetição.
+- Diferencie o que foi solicitado, proposto, aprovado, implementado, testado, confirmado pelo usuário, falhou, está pendente ou permanece incerto. Use rótulos quando ajudarem; não apresente proposta como implementação nem teste como aprovação do usuário.
+- Considere decisões explícitas posteriores, preservando divergências relevantes. Se a decisão atual ou a versão-base não puder ser determinada com segurança, registre a incerteza.
+- Identifique arquivos e artefatos pertinentes, seus nomes exatos, versões, finalidade, resultado de testes e disponibilidade quando conhecidos. Informe a base vigente ou a incerteza sobre ela; use links apenas quando disponíveis.
+- Preserve dados, datas, caminhos, comandos e identificadores exatos quando necessários. Para informações voláteis, registre a data da consulta se conhecida e indique a necessidade de revalidação.
+- Se já houver uma consolidação acessível, use-a como referência, confira-a contra o histórico disponível e incorpore fatos, correções e decisões posteriores. Não a trate como infalível nem presuma acesso a um registro ausente.
+
+## Resposta
+
+Apresente no próprio chat um registro estruturado e proporcional à complexidade. Inclua, quando pertinentes:
+
+1. objetivo e estado atual;
+2. decisões, requisitos, preferências e dados relevantes;
+3. arquivos, versões, base vigente e testes;
+4. falhas, pendências, riscos e próximo passo;
+5. cobertura e limitações das fontes examinadas.
+
+Omita seções sem utilidade, sem eliminar informação necessária para a continuidade. Explique o que está indisponível quando isso afetar o trabalho. Durante a consolidação, não refaça testes, não pesquise dados novos e não altere projetos ou serviços, salvo pedido explícito.
+
+Use o registro como referência nas próximas interações enquanto estiver acessível, conciliando-o com instruções e decisões posteriores. Ele é uma mensagem nesta conversa: não amplia a janela de contexto nem garante preservação após uma eventual compactação. Se for necessária preservação independente, sugira salvá-lo em arquivo.
+
 [tagger]
 
 Transforme o aprendizado relevante desta conversa em uma tag ou skill reutilizável e autossuficiente.
